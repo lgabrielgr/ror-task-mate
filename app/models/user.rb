@@ -3,6 +3,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def friendly_name
-    first_name.present? ? "#{first_name} #{last_name}" : email
+    first_name.present? ? "#{first_name}" : email
   end
 end
