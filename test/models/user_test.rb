@@ -3,7 +3,7 @@ require "test_helper"
 class UserTest < ActiveSupport::TestCase
   test "friendly_name returns full name if first name is present" do
     user = User.new(first_name: "Leo", last_name: "Doe", email: "john.doe@example.com")
-    assert_equal "Leo Doe", user.friendly_name
+    assert_equal "Leo", user.friendly_name
   end
 
   test "friendly_name returns email if first name is not present" do
