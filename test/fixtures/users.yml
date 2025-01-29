@@ -1,5 +1,20 @@
 one:
+    id: 1
     email: leo@test.com
     first_name: Leo
     last_name: Doe
+    encrypted_password: <%= BCrypt::Password.create('password') %>
+
+two:
+    id: 2
+    email: leito@test.com
+    first_name: Leito
+    last_name: Doe
+    encrypted_password: <%= BCrypt::Password.create('password') %>
+
+three:
+    id: 3
+    email: chuck.norris@test.com
+    first_name: Chuck
+    last_name: Norris
     encrypted_password: <%= BCrypt::Password.create('password') %>

@@ -10,4 +10,11 @@ class UserTest < ActiveSupport::TestCase
     user = User.new(first_name: nil, last_name: nil, email: "leo.doe@example.com")
     assert_equal "leo.doe@example.com", user.friendly_name
   end
+
+  test "teams_that_i_own returns teams that the user owns" do
+    user = users(:one)
+    assert user.teams_that_i_own.count == 2
+    assert user.teams_that_i_own.map(&:name).include?("Team Alpha")
+    assert user.teams_that_i_own.map(&:name).include?("Team Beta")
+  end
 end

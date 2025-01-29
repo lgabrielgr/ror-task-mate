@@ -1,0 +1,15 @@
+one:
+  team_id: 1
+  user_id: 1
+
+two:
+  team_id: 1
+  user_id: 2
+
+three:
+  team_id: 2
+  user_id: 1
+
+four:
+  team_id: 2
+  user_id: 3
