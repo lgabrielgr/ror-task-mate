@@ -4,7 +4,7 @@ class Team < ApplicationRecord
 
   validates :name, presence: true
 
-  def owner
-    User.find(owner_id)
+  def tickets
+    Ticket.where(team: self)
   end
 end

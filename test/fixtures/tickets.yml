@@ -1,0 +1,15 @@
+one:
+  id: 1
+  title: Ticket 1
+  description: Description 1
+  status: 0
+  assignee_id: 1
+  team_id: 1
+
+two:
+  id: 2
+  title: Ticket 2
+  description: Description 2
+  status: 1
+  assignee_id: 2
+  team_id: 1
