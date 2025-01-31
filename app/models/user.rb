@@ -11,4 +11,8 @@ class User < ApplicationRecord
   def teams_that_i_own
     Team.where("owner_id = ?", id)
   end
+
+  def no_teams_assigned?
+    teams.empty?
+  end
 end

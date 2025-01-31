@@ -17,4 +17,14 @@ class UserTest < ActiveSupport::TestCase
     assert user.teams_that_i_own.map(&:name).include?("Team Alpha")
     assert user.teams_that_i_own.map(&:name).include?("Team Beta")
   end
+
+  test "should verify if user has teams assigned" do
+    user = users(:one)
+    assert user.no_teams_assigned? == false
+  end
+
+  test "should verify if user has no teams assigned" do
+    user = User.create(email: "new.user@test.com", password: "password")
+    assert user.no_teams_assigned? == true
+  end
 end

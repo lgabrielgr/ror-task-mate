@@ -1,18 +1,31 @@
-<div class="container mt-5">
-  <div class="card">
-    <div class="card-header">
-      <h3>Your Teams</h3>
-    </div>
-    <div class="card-body">
-      <ul class="list-group">
-        <% current_user.teams.each do |team| %>
-          <li class="list-group-item">
-            <a href="<%= team_tickets_path(team_id: team.id) %>">
-              <%= team.name %> - <%= team.description %>
-            </a>
-          </li>
-        <% end %>
-      </ul>
+<% if current_user.no_teams_assigned? %>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h3>No Teams Assigned</h3>
+      </div>
+      <div class="card-body">
+        <p>You have not been assigned to any teams yet. Please contact your administrator.</p>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h3>Your Teams</h3>
+      </div>
+      <div class="card-body">
+        <ul class="list-group">
+          <% current_user.teams.each do |team| %>
+            <li class="list-group-item">
+              <a href="<%= team_tickets_path(team_id: team.id) %>">
+                <%= team.name %> - <%= team.description %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
