@@ -7,10 +7,12 @@ User.create!(first_name: "Zuly", last_name: "Doe", email: "zuly.doe@test.com", p
 # Sample Teams
 Team.create!(name: "Ruby API", description: "Microservice serving as API in Ruby lang", owner_id: User.find_by(email: "leo.doe@test.com").id).tap do |team|
   team.members << User.find_by(email: "zuly.doe@test.com")
+  team.members << User.find_by(email: "leo.doe@test.com")
 end
 Team.create!(name: "Java API", description: "Microservice serving as API in Java lang", owner_id: User.find_by(email: "leo.doe@test.com").id).tap do |team|
   team.members << User.find_by(email: "gabriel.doe@test.com")
   team.members << User.find_by(email: "lula.doe@test.com")
+  team.members << User.find_by(email: "leo.doe@test.com")
 end
 
 # Sample Tickets

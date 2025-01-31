@@ -1,0 +1,49 @@
+<div class="container">
+  <h2 style="margin-bottom: 20px;">Team: <%= @team.name %> (Total: <%= @tickets.count %> tickets)</h2>
+  <div class="row">
+    <div class="col-md-3">
+      <h3>TO DO</h3>
+      <% @tickets_to_do.each do |ticket| %>
+        <div class="card mb-2">
+          <div class="card-body" style="height: 150px;">
+            <h5 class="card-title"><%= truncate(ticket.title, length: 40, omission: "...") %></h5>
+            <p class="card-text"><%= ticket.assignee_name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <h3>IN PROGRESS</h3>
+      <% @tickets_in_progress.each do |ticket| %>
+        <div class="card mb-2">
+          <div class="card-body" style="height: 150px;">
+            <h5 class="card-title"><%= truncate(ticket.title, length: 40, omission: "...") %></h5>
+            <p class="card-text"><%= ticket.assignee_name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <h3>REVIEW</h3>
+      <% @tickets_review.each do |ticket| %>
+        <div class="card mb-2">
+          <div class="card-body" style="height: 150px;">
+            <h5 class="card-title"><%= truncate(ticket.title, length: 40, omission: "...") %></h5>
+            <p class="card-text"><%= ticket.assignee_name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <h3>DONE</h3>
+      <% @tickets_done.each do |ticket| %>
+        <div class="card mb-2">
+          <div class="card-body" style="height: 150px;">
+            <h5 class="card-title"><%= truncate(ticket.title, length: 40, omission: "...") %></h5>
+            <p class="card-text"><%= ticket.assignee_name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
