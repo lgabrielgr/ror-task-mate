@@ -25,4 +25,16 @@ class TicketTest < ActiveSupport::TestCase
     assert_not ticket.valid?
     assert ticket.errors[:status].include?("is not included in the list")
   end
+
+  test "should return human readable priority" do
+    assert tickets(:one).human_readable_priority == "Low"
+    assert tickets(:two).human_readable_priority == "Medium"
+    assert tickets(:three).human_readable_priority == "High"
+  end
+
+  test "should validate priority inclusion" do
+    ticket = Ticket.new(title: "New Ticket", team: teams(:one), priority: 3)
+    assert_not ticket.valid?
+    assert ticket.errors[:priority].include?("is not included in the list")
+  end
 end

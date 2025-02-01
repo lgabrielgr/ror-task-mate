@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_30_000411) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_01_041638) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -35,6 +35,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_30_000411) do
     t.integer "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "due_date"
+    t.integer "priority"
     t.index ["assignee_id"], name: "index_tickets_on_assignee_id"
     t.index ["team_id"], name: "index_tickets_on_team_id"
   end

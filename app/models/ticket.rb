@@ -4,6 +4,16 @@ class Ticket < ApplicationRecord
 
   validates :title, presence: true
   validates :status, inclusion: { in: [ 0, 1, 2, 3 ] }
+  validates :priority, inclusion: { in: [ 0, 1, 2 ] }
+
+  def human_readable_priority
+    case priority
+    when 0 then "Low"
+    when 1 then "Medium"
+    when 2 then "High"
+    else "Unknown"
+    end
+  end
 
   def human_readable_status
     case status

@@ -21,7 +21,7 @@ class TeamTest < ActiveSupport::TestCase
 
   test "should has tickets" do
     team = teams(:one)
-    assert team.tickets.count == 2
+    assert team.tickets.count == 3
     assert team.tickets.map(&:title).include?("Ticket 1")
     assert team.tickets.map(&:title).include?("Ticket 2")
   end
