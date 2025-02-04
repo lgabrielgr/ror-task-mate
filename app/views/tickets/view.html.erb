@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Team: <%= @team.name %></h2>
+        <div>
+          <a class="btn btn-secondary" href="<%= team_tickets_path(team_id: @team.id) %>">Back to Team</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3">
+          <p class="card-text">Assignee: <%= @ticket.assignee.friendly_name %></p>
+          <p class="card-text">Due date: <%= @ticket.due_date %></p>
+          <p class="card-text">Priority: <%= @ticket.human_readable_priority %> <%= @ticket.priority_emoticon.html_safe %></p>
+          <p class="card-text">Status: <%= @ticket.human_readable_status %></p>
+        </div>
+        <div class="col-md-8">
+          <p class="card-text">
+            <strong>Title</strong>
+            <br /><%= @ticket.title %>
+          </p>
+          <p class="card-text">
+            <strong>Description</strong>
+            <br /><%= @ticket.description %>
+          </p>
+          <p class="card-text">
+            <strong>Comments</strong>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <strong>John Doe:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis, ligula congue cursus sodales, nulla mi viverra ipsum, sit amet hendrerit turpis diam a neque. Praesent quis blandit elit.
+              </li>
+              <li class="list-group-item">
+                <strong>Jane Smith:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis, ligula congue cursus sodales, nulla mi viverra ipsum, sit amet hendrerit turpis diam a neque. Praesent quis blandit elit.
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
