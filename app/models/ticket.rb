@@ -15,6 +15,15 @@ class Ticket < ApplicationRecord
     end
   end
 
+  def priority_emoticon
+    case priority
+    when 0 then "&#x1F634;"
+    when 1 then "&#x1F610;"
+    when 2 then "&#x1F525;"
+    else "&#x2753;"
+    end
+  end
+
   def human_readable_status
     case status
     when 0 then "To Do"

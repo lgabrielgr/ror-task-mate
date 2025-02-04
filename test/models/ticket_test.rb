@@ -37,4 +37,10 @@ class TicketTest < ActiveSupport::TestCase
     assert_not ticket.valid?
     assert ticket.errors[:priority].include?("is not included in the list")
   end
+
+  test "should return priority emoticon" do
+    assert tickets(:one).priority_emoticon == "&#x1F634;"
+    assert tickets(:two).priority_emoticon == "&#x1F610;"
+    assert tickets(:three).priority_emoticon == "&#x1F525;"
+  end
 end
