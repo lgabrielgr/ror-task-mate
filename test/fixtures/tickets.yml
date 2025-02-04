@@ -5,6 +5,7 @@ one:
   status: 0
   assignee_id: 1
   team_id: 1
+  priority: 0
 
 two:
   id: 2
@@ -13,3 +14,13 @@ two:
   status: 1
   assignee_id: 2
   team_id: 1
+  priority: 1
+
+three:
+    id: 3
+    title: Ticket 3
+    description: Description 3
+    status: 2
+    assignee_id: 3
+    team_id: 1
+    priority: 2
