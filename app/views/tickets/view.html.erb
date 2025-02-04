@@ -13,7 +13,7 @@
         <div class="col-md-3">
           <p class="card-text">Assignee: <%= @ticket.assignee.friendly_name %></p>
           <p class="card-text">Due date: <%= @ticket.due_date %></p>
-          <p class="card-text">Priority: <%= @ticket.human_readable_priority %> <%= @ticket.priority_emoticon.html_safe %></p>
+          <p class="card-text">Priority: <%= @ticket.human_readable_priority %></p>
           <p class="card-text">Status: <%= @ticket.human_readable_status %></p>
         </div>
         <div class="col-md-8">
