@@ -24,3 +24,12 @@ three:
     assignee_id: 3
     team_id: 1
     priority: 2
+
+four:
+    id: 4
+    title: Ticket 4
+    description: Description 4
+    status: 0
+    assignee_id: 2
+    team_id: 2
+    priority: 1
