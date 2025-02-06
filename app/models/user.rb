@@ -15,4 +15,12 @@ class User < ApplicationRecord
   def no_teams_assigned?
     teams.empty?
   end
+
+  def can_see_team_tickets?(team)
+    teams.include?(team) || team.owner_id == id
+  end
+
+  def can_see_ticket?(ticket)
+    teams.include?(ticket.team) || ticket.team.owner_id == id
+  end
 end
