@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "team/:team_id/tickets" => "teams#tickets", as: :team_tickets
   get "ticket/:id" => "tickets#view", as: :ticket_view
+  get "ticket/:id/edit" => "tickets#edit", as: :ticket_edit
+  patch "ticket/:id" => "tickets#update", as: :ticket
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
