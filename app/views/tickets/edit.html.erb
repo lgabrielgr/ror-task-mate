@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h2>Edit Ticket</h2>
+    </div>
+    <div class="card-body">
+      <%= form_for(@ticket) do |f| %>
+        <div class="form-group">
+          <%= f.label :title, class: "form-label" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, class: "form-label" %>
+          <%= f.text_field :description, class: "form-control" %>
+        </div>
+        <%= f.submit "Save", class: "btn btn-primary mt-3" %>
+        <%= link_to "Cancel", ticket_view_path(@ticket), class: "btn btn-secondary mt-3 ml-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>

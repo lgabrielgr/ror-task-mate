@@ -11,10 +11,11 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-3">
-          <p class="card-text">Assignee: <%= @ticket.assignee.friendly_name %></p>
-          <p class="card-text">Due date: <%= @ticket.due_date %></p>
-          <p class="card-text">Priority: <%= @ticket.human_readable_priority %></p>
-          <p class="card-text">Status: <%= @ticket.human_readable_status %></p>
+          <p class="card-text"><strong>Assignee:</strong> <%= @ticket.assignee.friendly_name %></p>
+          <p class="card-text"><strong>Due date:</strong> <%= @ticket.due_date %></p>
+          <p class="card-text"><strong>Priority:</strong> <%= @ticket.human_readable_priority %></p>
+          <p class="card-text"><strong>Status:</strong> <%= @ticket.human_readable_status %></p>
+          <a class="btn btn-primary" href="<%= ticket_edit_path(@ticket) %>">Edit</a>
         </div>
         <div class="col-md-8">
           <p class="card-text">
