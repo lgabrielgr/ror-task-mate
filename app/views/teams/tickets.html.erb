@@ -25,7 +25,7 @@
             <a href="<%= ticket_view_path(id: ticket.id) %>" class="text-decoration-none text-dark">
               <div class="card mb-3 shadow-sm">
                 <div class="card-body" style="height: 170px;">
-                  <h5 class="card-title"><%= truncate(ticket.title, length: 40, omission: "...") %></h5>
+                  <h5 class="card-title"><%= truncate(ticket.title, length: @ticket_title_truncate_length, omission: "...") %></h5>
                   <p class="card-text">Assignee: <%= ticket.assignee_name %></p>
                   <p class="card-text" style="font-size: smaller; margin-top: -10px;">Due
                     date: <%= ticket.due_date %></p>
@@ -43,7 +43,7 @@
             <a href="<%= ticket_view_path(id: ticket.id) %>" class="text-decoration-none text-dark">
               <div class="card mb-3 shadow-sm">
                 <div class="card-body" style="height: 170px;">
-                  <h5 class="card-title"><%= truncate(ticket.title, length: 40, omission: "...") %></h5>
+                  <h5 class="card-title"><%= truncate(ticket.title, length: @ticket_title_truncate_length, omission: "...") %></h5>
                   <p class="card-text">Assignee: <%= ticket.assignee_name %></p>
                   <p class="card-text" style="font-size: smaller; margin-top: -10px;">Due
                     date: <%= ticket.due_date %></p>
@@ -61,7 +61,7 @@
             <a href="<%= ticket_view_path(id: ticket.id) %>" class="text-decoration-none text-dark">
               <div class="card mb-3 shadow-sm">
                 <div class="card-body" style="height: 170px;">
-                  <h5 class="card-title"><%= truncate(ticket.title, length: 40, omission: "...") %></h5>
+                  <h5 class="card-title"><%= truncate(ticket.title, length: @ticket_title_truncate_length, omission: "...") %></h5>
                   <p class="card-text">Assignee: <%= ticket.assignee_name %></p>
                   <p class="card-text" style="font-size: smaller; margin-top: -10px;">Due
                     date: <%= ticket.due_date %></p>
@@ -79,7 +79,7 @@
             <a href="<%= ticket_view_path(id: ticket.id) %>" class="text-decoration-none text-dark">
               <div class="card mb-3 shadow-sm">
                 <div class="card-body" style="height: 170px;">
-                  <h5 class="card-title"><%= truncate(ticket.title, length: 40, omission: "...") %></h5>
+                  <h5 class="card-title"><%= truncate(ticket.title, length: @ticket_title_truncate_length, omission: "...") %></h5>
                   <p class="card-text">Assignee: <%= ticket.assignee_name %></p>
                   <p class="card-text" style="font-size: smaller; margin-top: -10px;">Due
                     date: <%= ticket.due_date %></p>
