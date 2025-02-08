@@ -2,34 +2,50 @@ class Ticket < ApplicationRecord
   belongs_to :assignee, class_name: "User", optional: true
   belongs_to :team
 
+  TICKET_TO_DO_STATUS = 0
+  TICKET_IN_PROGRESS_STATUS = 1
+  TICKET_REVIEW_STATUS = 2
+  TICKET_DONE_STATUS = 3
+
+  TICKET_LOW_PRIORITY = 0
+  TICKET_MEDIUM_PRIORITY = 1
+  TICKET_HIGH_PRIORITY = 2
+
+  TICKET_LOW_PRIORITY_NAME = "Low"
+  TICKET_MEDIUM_PRIORITY_NAME = "Medium"
+  TICKET_HIGH_PRIORITY_NAME = "High"
+
+  TICKET_STATUS_OPTIONS = [ TICKET_TO_DO_STATUS, TICKET_IN_PROGRESS_STATUS, TICKET_REVIEW_STATUS, TICKET_DONE_STATUS ]
+  TICKET_PRIORITY_OPTIONS = [ TICKET_LOW_PRIORITY, TICKET_MEDIUM_PRIORITY, TICKET_HIGH_PRIORITY ]
+
   validates :title, presence: true
-  validates :status, inclusion: { in: [ 0, 1, 2, 3 ] }
-  validates :priority, inclusion: { in: [ 0, 1, 2 ] }
+  validates :status, inclusion: { in: TICKET_STATUS_OPTIONS }
+  validates :priority, inclusion: { in: TICKET_PRIORITY_OPTIONS }
 
   def human_readable_priority
     case priority
-    when 0 then "Low"
-    when 1 then "Medium"
-    when 2 then "High"
+    when TICKET_LOW_PRIORITY then TICKET_LOW_PRIORITY_NAME
+    when TICKET_MEDIUM_PRIORITY then TICKET_MEDIUM_PRIORITY_NAME
+    when TICKET_HIGH_PRIORITY then TICKET_HIGH_PRIORITY_NAME
     else "Unknown"
     end
   end
 
   def priority_emoticon
     case priority
-    when 0 then "&#x1F634;"
-    when 1 then "&#x1F610;"
-    when 2 then "&#x1F525;"
+    when TICKET_LOW_PRIORITY then "&#x1F634;"
+    when TICKET_MEDIUM_PRIORITY then "&#x1F610;"
+    when TICKET_HIGH_PRIORITY then "&#x1F525;"
     else "&#x2753;"
     end
   end
 
   def human_readable_status
     case status
-    when 0 then "To Do"
-    when 1 then "In Progress"
-    when 2 then "Review"
-    when 3 then "Done"
+    when TICKET_TO_DO_STATUS then "To Do"
+    when TICKET_IN_PROGRESS_STATUS then "In Progress"
+    when TICKET_REVIEW_STATUS then "Review"
+    when TICKET_DONE_STATUS then "Done"
     else "Unknown"
     end
   end

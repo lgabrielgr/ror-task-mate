@@ -2,18 +2,14 @@ class TeamsController < ApplicationController
   before_action :authorize_user, only: [ :tickets ]
 
   TRUNCATE_LENGTH = 22
-  TICKET_TO_DO_STATUS = 0
-  TICKET_IN_PROGRESS_STATUS = 1
-  TICKET_REVIEW_STATUS = 2
-  TICKET_DONE_STATUS = 3
 
   def tickets
     @team = Team.find(params[:team_id])
     @tickets = @team.tickets
-    @tickets_to_do = @tickets.where(status: TICKET_TO_DO_STATUS)
-    @tickets_in_progress = @tickets.where(status: TICKET_IN_PROGRESS_STATUS)
-    @tickets_review = @tickets.where(status: TICKET_REVIEW_STATUS)
-    @tickets_done = @tickets.where(status: TICKET_DONE_STATUS)
+    @tickets_to_do = @tickets.where(status: Ticket::TICKET_TO_DO_STATUS)
+    @tickets_in_progress = @tickets.where(status: Ticket::TICKET_IN_PROGRESS_STATUS)
+    @tickets_review = @tickets.where(status: Ticket::TICKET_REVIEW_STATUS)
+    @tickets_done = @tickets.where(status: Ticket::TICKET_DONE_STATUS)
     @ticket_title_truncate_length = TRUNCATE_LENGTH
   end
 
