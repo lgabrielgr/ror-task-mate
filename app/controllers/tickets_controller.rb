@@ -8,11 +8,12 @@ class TicketsController < ApplicationController
 
   def edit
     @ticket = Ticket.find(params[:id])
+    @assignees = @ticket.team.members
   end
 
   def update
     @ticket = Ticket.find(params[:id])
-    if @ticket.update(ticket_params)
+    if @ticket.update(ticket_update_params)
       redirect_to ticket_view_path(@ticket)
     else
       render "edit"
@@ -33,7 +34,7 @@ class TicketsController < ApplicationController
     end
   end
 
-  def ticket_params
-    params.require(:ticket).permit(:title, :description)
+  def ticket_update_params
+    params.require(:ticket).permit(:assignee_id, :title, :description)
   end
 end

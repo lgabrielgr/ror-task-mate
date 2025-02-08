@@ -7,8 +7,8 @@ class TicketTest < ActiveSupport::TestCase
   end
 
   test "should return assignee name" do
-    assert tickets(:one).assignee_name == "Leo"
-    assert tickets(:two).assignee_name == "Leito"
+    assert tickets(:one).assignee_name == "Leo (leo@test.com)"
+    assert tickets(:two).assignee_name == "Leito (leito@test.com)"
 
     ticket_unassigned = Ticket.create(title: "New Ticket", team: teams(:one), assignee: nil)
     assert ticket_unassigned.assignee_name == "Unassigned"
