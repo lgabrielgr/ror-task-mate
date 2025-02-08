@@ -1,6 +1,12 @@
 class TicketsController < ApplicationController
   before_action :authorize_user, only: [ :view, :edit ]
 
+  TICKET_PRIORITY_OPTIONS_FOR_SELECTION = {
+    Ticket::TICKET_LOW_PRIORITY => Ticket::TICKET_LOW_PRIORITY_NAME,
+    Ticket::TICKET_MEDIUM_PRIORITY => Ticket::TICKET_MEDIUM_PRIORITY_NAME,
+    Ticket::TICKET_HIGH_PRIORITY => Ticket::TICKET_HIGH_PRIORITY_NAME
+  }
+
   def view
     @ticket = Ticket.find(params[:id])
     @team = @ticket.team
@@ -35,6 +41,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_update_params
-    params.require(:ticket).permit(:assignee_id, :title, :description)
+    params.require(:ticket).permit(:assignee_id, :priority, :title, :description)
   end
 end
