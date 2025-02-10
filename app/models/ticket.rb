@@ -7,6 +7,11 @@ class Ticket < ApplicationRecord
   TICKET_REVIEW_STATUS = 2
   TICKET_DONE_STATUS = 3
 
+  TICKET_TO_DO_STATUS_NAME = "To Do"
+  TICKET_IN_PROGRESS_STATUS_NAME = "In Progress"
+  TICKET_REVIEW_STATUS_NAME = "Review"
+  TICKET_DONE_STATUS_NAME = "Done"
+
   TICKET_LOW_PRIORITY = 0
   TICKET_MEDIUM_PRIORITY = 1
   TICKET_HIGH_PRIORITY = 2
@@ -42,10 +47,10 @@ class Ticket < ApplicationRecord
 
   def human_readable_status
     case status
-    when TICKET_TO_DO_STATUS then "To Do"
-    when TICKET_IN_PROGRESS_STATUS then "In Progress"
-    when TICKET_REVIEW_STATUS then "Review"
-    when TICKET_DONE_STATUS then "Done"
+    when TICKET_TO_DO_STATUS then TICKET_TO_DO_STATUS_NAME
+    when TICKET_IN_PROGRESS_STATUS then TICKET_IN_PROGRESS_STATUS_NAME
+    when TICKET_REVIEW_STATUS then TICKET_REVIEW_STATUS_NAME
+    when TICKET_DONE_STATUS then TICKET_DONE_STATUS_NAME
     else "Unknown"
     end
   end

@@ -18,6 +18,13 @@
                        class: "form-control" %>
         </div>
         <div class="form-group">
+          <%= f.label :status, class: "form-label" %>
+          <%= f.select :status,
+                       TicketsController::TICKET_STATUS_OPTIONS_FOR_SELECTION.map { |id, name| [name, id] },
+                       { prompt: "Select Status" },
+                       class: "form-control" %>
+        </div>
+        <div class="form-group">
           <%= f.label :title, class: "form-label" %>
           <%= f.text_field :title, class: "form-control" %>
         </div>
