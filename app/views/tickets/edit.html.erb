@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
           <%= f.label :description, class: "form-label" %>
-          <%= f.text_field :description, class: "form-control" %>
+          <%= f.textarea :description, class: "form-control" %>
         </div>
         <%= f.submit "Save", class: "btn btn-primary mt-3" %>
         <%= link_to "Cancel", ticket_view_path(@ticket), class: "btn btn-secondary mt-3 ml-2" %>
