@@ -48,6 +48,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_update_params
-    params.require(:ticket).permit(:assignee_id, :priority, :status, :title, :description)
+    params.require(:ticket).permit(:assignee_id, :priority, :status, :due_date, :title, :description)
   end
 end

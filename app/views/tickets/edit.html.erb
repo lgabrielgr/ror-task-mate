@@ -13,6 +13,10 @@
         <%= form_group_select(f, :priority, TicketsController::TICKET_PRIORITY_OPTIONS_FOR_SELECTION, "Select Priority") %>
         <%= form_group_select(f, :status, TicketsController::TICKET_STATUS_OPTIONS_FOR_SELECTION, "Select Status") %>
         <div class="form-group">
+          <%= f.label :due_date, class: "form-label" %>
+          <%= f.date_field :due_date, class: "form-control" %>
+        </div>
+        <div class="form-group">
           <%= f.label :title, class: "form-label" %>
           <%= f.text_field :title, class: "form-control" %>
         </div>
