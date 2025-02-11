@@ -7,6 +7,13 @@ class TicketsController < ApplicationController
     Ticket::TICKET_HIGH_PRIORITY => Ticket::TICKET_HIGH_PRIORITY_NAME
   }
 
+  TICKET_STATUS_OPTIONS_FOR_SELECTION = {
+    Ticket::TICKET_TO_DO_STATUS => Ticket::TICKET_TO_DO_STATUS_NAME,
+    Ticket::TICKET_IN_PROGRESS_STATUS => Ticket::TICKET_IN_PROGRESS_STATUS_NAME,
+    Ticket::TICKET_REVIEW_STATUS => Ticket::TICKET_REVIEW_STATUS_NAME,
+    Ticket::TICKET_DONE_STATUS => Ticket::TICKET_DONE_STATUS_NAME
+  }
+
   def view
     @ticket = Ticket.find(params[:id])
     @team = @ticket.team
@@ -41,6 +48,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_update_params
-    params.require(:ticket).permit(:assignee_id, :priority, :title, :description)
+    params.require(:ticket).permit(:assignee_id, :priority, :status, :due_date, :title, :description)
   end
 end

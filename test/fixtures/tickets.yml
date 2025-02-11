@@ -6,6 +6,7 @@ one:
   assignee_id: 1
   team_id: 1
   priority: 0
+  due_date: 2014-01-01
 
 two:
   id: 2
@@ -15,6 +16,7 @@ two:
   assignee_id: 2
   team_id: 1
   priority: 1
+  due_date: 2014-01-01
 
 three:
     id: 3
@@ -24,6 +26,7 @@ three:
     assignee_id: 3
     team_id: 1
     priority: 2
+    due_date: 2014-01-01
 
 four:
     id: 4
@@ -33,3 +36,4 @@ four:
     assignee_id: 2
     team_id: 2
     priority: 1
+    due_date: 2014-01-01
