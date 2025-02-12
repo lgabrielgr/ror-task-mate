@@ -4,6 +4,7 @@ one:
     first_name: Leo
     last_name: Doe
     encrypted_password: <%= BCrypt::Password.create('password') %>
+    admin: true
 
 two:
     id: 2

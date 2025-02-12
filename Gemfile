@@ -23,7 +23,8 @@ gem "bcrypt", "~> 3.1.7"
 # Flexible authentication solution for Rails with Warden
 gem "devise", "~> 4.9.3"
 
-# Use Redis adapter for cache store [
+# Authorization library for Rails applications
+gem "pundit", "~> 2.2"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
