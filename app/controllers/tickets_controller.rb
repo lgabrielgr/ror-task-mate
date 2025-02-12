@@ -26,10 +26,26 @@ class TicketsController < ApplicationController
 
   def update
     @ticket = Ticket.find(params[:id])
-    if @ticket.update(ticket_update_params)
+    if @ticket.update(ticket_params)
       redirect_to ticket_view_path(@ticket)
     else
       render "edit"
+    end
+  end
+
+  def new
+    @team = Team.find(params[:team_id])
+    @ticket = Ticket.new
+  end
+
+  def create
+    @team = Team.find(params[:team_id])
+    @ticket = Ticket.new(ticket_params)
+    @ticket.team = @team
+    if @ticket.save
+      redirect_to team_tickets_path(@team)
+    else
+      render "new"
     end
   end
 
@@ -47,7 +63,7 @@ class TicketsController < ApplicationController
     end
   end
 
-  def ticket_update_params
+  def ticket_params
     params.require(:ticket).permit(:assignee_id, :priority, :status, :due_date, :title, :description)
   end
 end

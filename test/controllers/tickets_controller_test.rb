@@ -38,4 +38,19 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
     patch ticket_url(id: 1), params: { ticket: { title: "Updated Title", description: "Updated Description" } }
     assert_redirected_to ticket_view_path(id: 1)
   end
+
+
+  test "should get new ticket form" do
+    sign_in users(:one)
+    get new_ticket_url(team_id: teams(:one).id)
+    assert_response :success
+  end
+
+  test "should create ticket" do
+    sign_in users(:one)
+    assert_difference("Ticket.count") do
+      post team_tickets_url(team_id: teams(:one).id), params: { ticket: { title: "New Ticket", description: "New Description", priority: Ticket::TICKET_LOW_PRIORITY, status: Ticket::TICKET_TO_DO_STATUS } }
+    end
+    assert_redirected_to team_tickets_path(teams(:one))
+  end
 end
