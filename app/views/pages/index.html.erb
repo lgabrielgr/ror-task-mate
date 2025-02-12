@@ -21,6 +21,9 @@
             <li class="list-group-item">
               <a href="<%= team_tickets_path(team_id: team.id) %>">
                 <%= team.name %> - <%= team.description %>
+                <% if policy(team).edit? %>
+                  <a href="<%= team_edit_path(team_id: team.id) %>" class="btn btn-primary float-right">Edit team</a>
+                <% end %>
               </a>
             </li>
           <% end %>

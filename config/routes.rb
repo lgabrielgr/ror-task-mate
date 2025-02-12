@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "team/:team_id/tickets" => "teams#tickets", as: :team_tickets
   get "team/:team_id/tickets/new" => "tickets#new", as: :new_ticket
   post "team/:team_id/tickets" => "tickets#create", as: :create_ticket
+  get "team/:team_id/edit" => "teams#edit", as: :team_edit
+  patch "team/:team_id" => "teams#update", as: :team
   get "ticket/:id" => "tickets#view", as: :ticket_view
   get "ticket/:id/edit" => "tickets#edit", as: :ticket_edit
   patch "ticket/:id" => "tickets#update", as: :ticket
