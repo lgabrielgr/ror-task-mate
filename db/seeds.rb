@@ -26,16 +26,16 @@ end
 # Sample Tickets
 Ticket.create!(title: "Implement basic auth", description: "Description of Ticket 1", status: 0,
                team_id: Team.find_by(name: TEAM_RUBY_API_NAME_SAMPLE).id, priority: 2, due_date: Date.new(2025, 9, 21),
-               assignee_id: User.find_by(email: LEO_USER_EMAIL).id)
+               assignee_id: User.find_by(email: LEO_USER_EMAIL).id, creator_id: User.find_by(email: LEO_USER_EMAIL).id)
 Ticket.create!(title: "Project Scaffolding", description: "Description of Ticket 2", status: 1,
                team_id: Team.find_by(name: TEAM_RUBY_API_NAME_SAMPLE).id, priority: 2, due_date: Date.new(2025, 8, 14),
-               assignee_id: User.find_by(email: ZULY_USER_EMAIL).id)
+               assignee_id: User.find_by(email: ZULY_USER_EMAIL).id, creator_id: User.find_by(email: LEO_USER_EMAIL).id)
 Ticket.create!(title: "Create endpoints to retrieve user information", description: "Description of Ticket 3", status: 0,
                team_id: Team.find_by(name: TEAM_JAVA_API_NAME_SAMPLE).id, priority: 1, due_date: Date.new(2025, 10, 10),
-               assignee_id: User.find_by(email: LULA_USER_EMAIL).id)
+               assignee_id: User.find_by(email: LULA_USER_EMAIL).id, creator_id: User.find_by(email: LEO_USER_EMAIL).id)
 Ticket.create!(title: "Implement basic auth", description: "Description of Ticket 4", status: 0,
                team_id: Team.find_by(name: TEAM_JAVA_API_NAME_SAMPLE).id, priority: 2, due_date: Date.new(2025, 9, 29),
-               assignee_id: User.find_by(email: GABRIEL_USER_EMAIL).id)
+               assignee_id: User.find_by(email: GABRIEL_USER_EMAIL).id, creator_id: User.find_by(email: LEO_USER_EMAIL).id)
 Ticket.create!(title: "Project Scaffolding", description: "Description of Ticket 5", status: 3,
                team_id: Team.find_by(name: TEAM_JAVA_API_NAME_SAMPLE).id, priority: 0, due_date: Date.new(2025, 9, 1),
-               assignee_id: User.find_by(email: GABRIEL_USER_EMAIL).id)
+               assignee_id: User.find_by(email: GABRIEL_USER_EMAIL).id, creator_id: User.find_by(email: LEO_USER_EMAIL).id)
