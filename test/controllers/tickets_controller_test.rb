@@ -53,4 +53,10 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to team_tickets_path(teams(:one))
   end
+
+  test "should redirect user to root if user is not assigned to team" do
+    sign_in users(:three)
+    get new_ticket_url(team_id: teams(:one).id)
+    assert_redirected_to root_path
+  end
 end

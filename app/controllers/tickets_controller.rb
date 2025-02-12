@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
-  before_action :authorize_user, only: [ :view, :edit ]
+  before_action :authorize_read_update_ticket, only: [ :view, :edit ]
+  before_action :authorize_create_ticket, only: [ :new, :create ]
 
   TICKET_PRIORITY_OPTIONS_FOR_SELECTION = {
     Ticket::TICKET_LOW_PRIORITY => Ticket::TICKET_LOW_PRIORITY_NAME,
@@ -51,7 +52,7 @@ class TicketsController < ApplicationController
 
   private
 
-  def authorize_user
+  def authorize_read_update_ticket
     begin
       @ticket = Ticket.find(params[:id])
       unless current_user.can_see_ticket?(@ticket)
@@ -59,6 +60,18 @@ class TicketsController < ApplicationController
       end
     rescue ActiveRecord::RecordNotFound
       Rails.logger.warn "User with id #{current_user.id} tried to access non-existent ticket with id #{params[:id]}"
+      redirect_to root_path
+    end
+  end
+
+  def authorize_create_ticket
+    begin
+      @team = Team.find(params[:team_id])
+      unless @team.is_team_member?(current_user)
+        redirect_to root_path
+      end
+    rescue ActiveRecord::RecordNotFound
+      Rails.logger.warn "User with id #{current_user.id} tried to access non-existent team with id #{params[:id]}"
       redirect_to root_path
     end
   end
