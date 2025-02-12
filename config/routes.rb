@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "team/:team_id/tickets" => "teams#tickets", as: :team_tickets
+  get "team/:team_id/tickets/new" => "tickets#new", as: :new_ticket
+  post "team/:team_id/tickets" => "tickets#create", as: :create_ticket
   get "ticket/:id" => "tickets#view", as: :ticket_view
   get "ticket/:id/edit" => "tickets#edit", as: :ticket_edit
   patch "ticket/:id" => "tickets#update", as: :ticket

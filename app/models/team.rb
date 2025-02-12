@@ -7,4 +7,8 @@ class Team < ApplicationRecord
   def tickets
     Ticket.where(team: self)
   end
+
+  def is_team_member?(user)
+    members.include?(user)
+  end
 end

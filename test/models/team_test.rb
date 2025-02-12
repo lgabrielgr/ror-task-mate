@@ -25,4 +25,11 @@ class TeamTest < ActiveSupport::TestCase
     assert team.tickets.map(&:title).include?("Ticket 1")
     assert team.tickets.map(&:title).include?("Ticket 2")
   end
+
+  test "should verify if a user is a team member" do
+    team = teams(:one)
+    assert team.is_team_member?(users(:one))
+    assert team.is_team_member?(users(:two))
+    assert_not team.is_team_member?(users(:three))
+  end
 end
