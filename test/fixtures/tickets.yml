@@ -4,6 +4,7 @@ one:
   description: Description 1
   status: 0
   assignee_id: 1
+  creator_id: 1
   team_id: 1
   priority: 0
   due_date: 2014-01-01
@@ -14,6 +15,7 @@ two:
   description: Description 2
   status: 1
   assignee_id: 2
+  creator_id: 1
   team_id: 1
   priority: 1
   due_date: 2014-01-01
@@ -24,6 +26,7 @@ three:
     description: Description 3
     status: 2
     assignee_id: 3
+    creator_id: 1
     team_id: 1
     priority: 2
     due_date: 2014-01-01
@@ -34,6 +37,7 @@ four:
     description: Description 4
     status: 0
     assignee_id: 2
+    creator_id: 1
     team_id: 2
     priority: 1
     due_date: 2014-01-01

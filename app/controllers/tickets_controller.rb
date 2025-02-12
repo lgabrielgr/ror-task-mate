@@ -39,10 +39,11 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new
   end
 
-  def create
+  def   create
     @team = Team.find(params[:team_id])
     @ticket = Ticket.new(ticket_params)
     @ticket.team = @team
+    @ticket.creator = current_user
     if @ticket.save
       redirect_to team_tickets_path(@team)
     else

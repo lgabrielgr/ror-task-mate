@@ -49,7 +49,9 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
   test "should create ticket" do
     sign_in users(:one)
     assert_difference("Ticket.count") do
-      post team_tickets_url(team_id: teams(:one).id), params: { ticket: { title: "New Ticket", description: "New Description", priority: Ticket::TICKET_LOW_PRIORITY, status: Ticket::TICKET_TO_DO_STATUS } }
+      post create_ticket_url(team_id: teams(:one).id), params: { ticket: { title: "New Ticket", description: "New Description",
+                                                                          priority: Ticket::TICKET_LOW_PRIORITY,
+                                                                          status: Ticket::TICKET_TO_DO_STATUS } }
     end
     assert_redirected_to team_tickets_path(teams(:one))
   end
