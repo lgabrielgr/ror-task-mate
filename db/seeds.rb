@@ -7,7 +7,7 @@ TEAM_RUBY_API_NAME_SAMPLE = "Ruby API"
 TEAM_JAVA_API_NAME_SAMPLE = "Java API"
 
 # Sample Users
-User.create!(first_name: "Leo", last_name: "Doe", email: LEO_USER_EMAIL, password: "zaq12wsx")
+User.create!(first_name: "Leo", last_name: "Doe", email: LEO_USER_EMAIL, password: "zaq12wsx", admin: true)
 User.create!(first_name: "Gabriel", last_name: "Doe", email: GABRIEL_USER_EMAIL, password: "zaq12wsx")
 User.create!(first_name: "Lula", last_name: "Doe", email: LULA_USER_EMAIL, password: "zaq12wsx")
 User.create!(first_name: "Zuly", last_name: "Doe", email: ZULY_USER_EMAIL, password: "zaq12wsx")
