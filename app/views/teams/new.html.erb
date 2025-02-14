@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h3>Create New Team</h3>
+    </div>
+    <div class="card-body">
+      <%= form_with(model: @team, url: create_team_path, local: true) do |form| %>
+        <div class="form-group">
+          <%= form.label :name, class: "form-label" %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :description, class: "form-label" %>
+          <%= form.text_area :description, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :owner_id, "Owner" %>
+          <%= form.collection_select :owner_id, User.all, :id, :friendly_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :member_ids, "Members" %>
+          <%= form.collection_select :member_ids, User.all, :id, :friendly_name, { include_hidden: false, multiple: true }, class: "form-control" %>
+        </div>
+        <div class="form-group mt-3">
+          <%= form.submit "Create Team", class: "btn btn-primary" %>
+          <a class="btn btn-secondary" href="<%= root_path %>">Cancel</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

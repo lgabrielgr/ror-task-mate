@@ -28,6 +28,21 @@ class TeamsController < ApplicationController
     end
   end
 
+  def new
+    @team = Team.new
+    authorize @team, :create?
+  end
+
+  def create
+    @team = Team.new(team_params)
+    authorize @team, :create?
+    if @team.save
+      redirect_to root_path
+    else
+      render
+    end
+  end
+
   private
 
   def set_team

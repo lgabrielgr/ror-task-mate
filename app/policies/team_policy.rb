@@ -1,5 +1,5 @@
 class TeamPolicy
-  def initialize(user, team)
+  def initialize(user, team = nil)
     @user = user
     @team = team
   end
