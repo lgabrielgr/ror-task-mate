@@ -13,7 +13,14 @@
   <div class="container mt-5">
     <div class="card">
       <div class="card-header bg-primary text-white">
-        <h3>Your Teams</h3>
+        <div class="d-flex justify-content-between align-items-center">
+          <h3>Your Teams</h3>
+          <% if TeamPolicy.new(current_user).create? %>
+            <div>
+              <a class="btn btn-info" href="<%= new_team_path %>">Create new team</a>
+            </div>
+          <% end %>
+        </div>
       </div>
       <div class="card-body">
         <ul class="list-group">
