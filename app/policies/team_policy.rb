@@ -23,6 +23,6 @@ class TeamPolicy
   private
 
   def is_admin_or_team_owner?
-    @user.admin? || @team.owner == @user
+    @user.admin? || @team&.owner == @user
   end
 end

@@ -36,6 +36,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     authorize @team, :create?
+    @team.creator = current_user
     if @team.save
       redirect_to root_path
     else

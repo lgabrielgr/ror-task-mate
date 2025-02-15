@@ -21,6 +21,10 @@
         </div>
 
         <div class="form-group">
+          Creator: <%= @team.creator.friendly_name %>
+        </div>
+
+        <div class="form-group">
           <%= f.label :member_ids, "Members" %>
           <%= f.collection_select :member_ids, User.all, :id, :friendly_name, { include_hidden: false, multiple: true }, class: "form-control" %>
         </div>
