@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_12_222049) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_14_235554) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "creator_id", null: false
     t.index ["owner_id"], name: "index_teams_on_owner_id"
   end
 
@@ -54,6 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_12_222049) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "teams", "users", column: "creator_id"
   add_foreign_key "teams", "users", column: "owner_id"
   add_foreign_key "tickets", "teams"
   add_foreign_key "tickets", "users", column: "assignee_id"
