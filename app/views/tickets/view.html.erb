@@ -16,7 +16,9 @@
           <p class="card-text"><strong>Due date:</strong> <%= @ticket.due_date %> <%= @ticket.due_date < Date.today ? "&#128680;".html_safe : "" %></p>
           <p class="card-text"><strong>Priority:</strong> <%= @ticket.human_readable_priority %></p>
           <p class="card-text"><strong>Status:</strong> <%= @ticket.human_readable_status %></p>
-          <a class="btn btn-primary" href="<%= ticket_edit_path(@ticket) %>">Edit</a>
+          <% if policy(@ticket).edit? %>
+            <a class="btn btn-primary" href="<%= ticket_edit_path(@ticket) %>">Edit</a>
+          <% end %>
         </div>
         <div class="col-md-8">
           <p class="card-text">
