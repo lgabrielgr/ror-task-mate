@@ -6,7 +6,7 @@
           Team: <%= @team.name %>
           <span style="font-size: smaller;">
             <% if @team.tickets.count == 0 %>
-              No tickets
+              (No tickets)
             <% else %>
               (<%= @team.tickets.count %> <%= @team.tickets.count == 1 ? "ticket" : "tickets" %> in total)
             <% end %>

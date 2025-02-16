@@ -18,7 +18,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
   end
 
-  test "should log warning and redirect if team does not exist" do
+  test "should redirect to root if team does not exist" do
     sign_in users(:one)
     get team_tickets_url(team_id: -1)
     assert_redirected_to root_path
