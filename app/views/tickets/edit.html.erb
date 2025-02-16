@@ -18,6 +18,9 @@
           <%= f.collection_select :assignee_id, @assignees, :id, :friendly_name, { prompt: "Select Assignee" },
                                   class: "form-control" %>
         </div>
+        <div class="form-group">
+          Reporter: <%= @ticket.creator.friendly_name %>
+        </div>
         <%= form_group_select(f, :priority, TicketsController::TICKET_PRIORITY_OPTIONS_FOR_SELECTION, "Select Priority") %>
         <%= form_group_select(f, :status, TicketsController::TICKET_STATUS_OPTIONS_FOR_SELECTION, "Select Status") %>
         <div class="form-group">
