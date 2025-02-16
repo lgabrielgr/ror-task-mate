@@ -20,6 +20,10 @@ class TeamPolicy
     is_admin_or_team_owner?
   end
 
+  def tickets?
+    @user.can_see_team_tickets?(@team)
+  end
+
   private
 
   def is_admin_or_team_owner?
