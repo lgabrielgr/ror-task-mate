@@ -48,4 +48,16 @@ class TicketPolicyTest < ActiveSupport::TestCase
     ticket = Ticket.new(team: teams(:two))
     assert_not TicketPolicy.new(user, ticket).create?
   end
+
+  test "user_can_destroy_ticket" do
+    user = users(:one)
+    ticket = tickets(:one)
+    assert TicketPolicy.new(user, ticket).destroy?
+  end
+
+  test "user_cannot_destroy_ticket" do
+    user = users(:two)
+    ticket = tickets(:four)
+    assert_not TicketPolicy.new(user, ticket).destroy?
+  end
 end

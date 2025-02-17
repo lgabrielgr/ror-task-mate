@@ -40,7 +40,7 @@ class TicketsController < ApplicationController
     authorize @ticket, :new?
   end
 
-  def   create
+  def create
     set_team
     @ticket = Ticket.new(ticket_params)
     @ticket.team = @team
@@ -51,6 +51,13 @@ class TicketsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def destroy
+    set_ticket
+    authorize @ticket, :destroy?
+    @ticket.destroy
+    redirect_to team_tickets_path(@ticket.team)
   end
 
   private
