@@ -61,4 +61,12 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
     get new_ticket_url(team_id: teams(:one).id)
     assert_redirected_to root_path
   end
+
+  test "should destroy ticket if user is authorized" do
+    sign_in users(:one)
+    assert_difference("Ticket.count", -1) do
+      delete ticket_destroy_url(id: 1)
+    end
+    assert_redirected_to team_tickets_path(teams(:one))
+  end
 end

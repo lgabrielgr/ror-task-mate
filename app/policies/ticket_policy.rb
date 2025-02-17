@@ -24,6 +24,10 @@ class TicketPolicy
     create?
   end
 
+  def destroy?
+    create?
+  end
+
   private
 
   def can_view_edit_ticket?
@@ -31,6 +35,6 @@ class TicketPolicy
   end
 
   def can_create_ticket?
-    @ticket.team.is_team_member?(@user)
+    @ticket.team.is_team_member?(@user) || @user.admin?
   end
 end
