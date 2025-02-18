@@ -9,7 +9,6 @@ class TeamsController < ApplicationController
     @tickets_in_progress = @tickets.where(status: Ticket::TICKET_IN_PROGRESS_STATUS)
     @tickets_review = @tickets.where(status: Ticket::TICKET_REVIEW_STATUS)
     @tickets_done = @tickets.where(status: Ticket::TICKET_DONE_STATUS)
-    @ticket_title_truncate_length = TRUNCATE_LENGTH
   end
 
   def edit
@@ -41,6 +40,13 @@ class TeamsController < ApplicationController
     else
       render
     end
+  end
+
+  def destroy
+    set_team
+    authorize @team, :destroy?
+    @team.destroy
+    redirect_to root_path
   end
 
   private

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch "team/:team_id" => "teams#update", as: :team
   get "team/new" => "teams#new", as: :new_team
   post "team" => "teams#create", as: :create_team
+  delete "team/:team_id/delete" => "teams#destroy", as: :team_destroy
   # TICKET ROUTES
   get "ticket/:id" => "tickets#view", as: :ticket_view
   get "ticket/:id/edit" => "tickets#edit", as: :ticket_edit

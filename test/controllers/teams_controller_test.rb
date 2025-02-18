@@ -60,4 +60,20 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     get new_team_url
     assert_redirected_to root_path
   end
+
+  test "should delete team" do
+    sign_in users(:one)
+    team = teams(:one)
+    assert_difference("Team.count", -1) do
+      delete team_destroy_url(team_id: team.id)
+    end
+    assert_redirected_to root_path
+  end
+
+  test "should redirect user to root if user is not authorized to delete a team" do
+    sign_in users(:two)
+    team = teams(:one)
+    delete team_destroy_url(team_id: team.id)
+    assert_redirected_to root_path
+  end
 end
