@@ -9,7 +9,6 @@ class TeamsController < ApplicationController
     @tickets_in_progress = @tickets.where(status: Ticket::TICKET_IN_PROGRESS_STATUS)
     @tickets_review = @tickets.where(status: Ticket::TICKET_REVIEW_STATUS)
     @tickets_done = @tickets.where(status: Ticket::TICKET_DONE_STATUS)
-    @ticket_title_truncate_length = TRUNCATE_LENGTH
   end
 
   def edit

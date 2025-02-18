@@ -23,73 +23,25 @@
         <div class="col-md-3">
           <h3 class="text-center text-info">TO DO</h3>
           <% @tickets_to_do.each do |ticket| %>
-            <a href="<%= ticket_view_path(id: ticket.id) %>" class="text-decoration-none text-dark">
-              <div class="card mb-3 shadow-sm">
-                <div class="card-body" style="height: 170px;">
-                  <h5 class="card-title"><%= truncate(ticket.title, length: @ticket_title_truncate_length, omission: "...") %></h5>
-                  <p class="card-text">Assignee: <%= ticket.assignee_name %></p>
-                  <p class="card-text" style="font-size: smaller; margin-top: -10px;">Due
-                    date: <%= ticket.due_date %> <%= ticket.due_date < Date.today ? "&#128680;".html_safe : "" %></p>
-                  <p class="card-text" style="font-size: smaller; margin-top: -10px;">
-                    <%= content_tag(:span, ticket.priority_emoticon.html_safe, title: ticket.human_readable_priority + " Priority ") %>
-                  </p>
-                </div>
-              </div>
-            </a>
+            <%= ticket_card(ticket) %>
           <% end %>
         </div>
         <div class="col-md-3">
           <h3 class="text-center text-warning">IN PROGRESS</h3>
           <% @tickets_in_progress.each do |ticket| %>
-            <a href="<%= ticket_view_path(id: ticket.id) %>" class="text-decoration-none text-dark">
-              <div class="card mb-3 shadow-sm">
-                <div class="card-body" style="height: 170px;">
-                  <h5 class="card-title"><%= truncate(ticket.title, length: @ticket_title_truncate_length, omission: "...") %></h5>
-                  <p class="card-text">Assignee: <%= ticket.assignee_name %></p>
-                  <p class="card-text" style="font-size: smaller; margin-top: -10px;">Due
-                    date: <%= ticket.due_date %> <%= ticket.due_date < Date.today ? "&#128680;".html_safe : "" %></p>
-                  <p class="card-text" style="font-size: smaller; margin-top: -10px;">
-                    <%= content_tag(:span, ticket.priority_emoticon.html_safe, title: ticket.human_readable_priority + " Priority ") %>
-                  </p>
-                </div>
-              </div>
-            </a>
+            <%= ticket_card(ticket) %>
           <% end %>
         </div>
         <div class="col-md-3">
           <h3 class="text-center text-primary">REVIEW</h3>
           <% @tickets_review.each do |ticket| %>
-            <a href="<%= ticket_view_path(id: ticket.id) %>" class="text-decoration-none text-dark">
-              <div class="card mb-3 shadow-sm">
-                <div class="card-body" style="height: 170px;">
-                  <h5 class="card-title"><%= truncate(ticket.title, length: @ticket_title_truncate_length, omission: "...") %></h5>
-                  <p class="card-text">Assignee: <%= ticket.assignee_name %></p>
-                  <p class="card-text" style="font-size: smaller; margin-top: -10px;">Due
-                    date: <%= ticket.due_date %> <%= ticket.due_date < Date.today ? "&#128680;".html_safe : "" %></p>
-                  <p class="card-text" style="font-size: smaller; margin-top: -10px;">
-                    <%= content_tag(:span, ticket.priority_emoticon.html_safe, title: ticket.human_readable_priority + " Priority ") %>
-                  </p>
-                </div>
-              </div>
-            </a>
+            <%= ticket_card(ticket) %>
           <% end %>
         </div>
         <div class="col-md-3">
           <h3 class="text-center text-success">DONE</h3>
           <% @tickets_done.each do |ticket| %>
-            <a href="<%= ticket_view_path(id: ticket.id) %>" class="text-decoration-none text-dark">
-              <div class="card mb-3 shadow-sm">
-                <div class="card-body" style="height: 170px;">
-                  <h5 class="card-title"><%= truncate(ticket.title, length: @ticket_title_truncate_length, omission: "...") %></h5>
-                  <p class="card-text">Assignee: <%= ticket.assignee_name %></p>
-                  <p class="card-text" style="font-size: smaller; margin-top: -10px;">Due
-                    date: <%= ticket.due_date %> <%= ticket.due_date < Date.today ? "&#128680;".html_safe : "" %></p>
-                  <p class="card-text" style="font-size: smaller; margin-top: -10px;">
-                    <%= content_tag(:span, ticket.priority_emoticon.html_safe, title: ticket.human_readable_priority + " Priority ") %>
-                  </p>
-                </div>
-              </div>
-            </a>
+            <%= ticket_card(ticket) %>
           <% end %>
         </div>
       </div>
