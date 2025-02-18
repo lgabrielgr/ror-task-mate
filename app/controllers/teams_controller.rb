@@ -42,6 +42,13 @@ class TeamsController < ApplicationController
     end
   end
 
+  def destroy
+    set_team
+    authorize @team, :destroy?
+    @team.destroy
+    redirect_to root_path
+  end
+
   private
 
   def set_team
