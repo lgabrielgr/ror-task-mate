@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_14_235554) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_20_040918) do
+  create_table "comments", force: :cascade do |t|
+    t.text "body", null: false
+    t.boolean "edited", default: false, null: false
+    t.integer "author_id", null: false
+    t.integer "ticket_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["ticket_id"], name: "index_comments_on_ticket_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -55,6 +66,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_235554) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "comments", "tickets"
+  add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "teams", "users", column: "creator_id"
   add_foreign_key "teams", "users", column: "owner_id"
   add_foreign_key "tickets", "teams"
