@@ -2,6 +2,7 @@ class Ticket < ApplicationRecord
   belongs_to :assignee, class_name: "User", optional: true
   belongs_to :creator, class_name: "User"
   belongs_to :team
+  has_many :comments, dependent: :destroy
 
   TICKET_TO_DO_STATUS = 0
   TICKET_IN_PROGRESS_STATUS = 1
