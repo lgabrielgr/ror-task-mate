@@ -60,4 +60,12 @@ class Ticket < ApplicationRecord
   def assignee_name
     assignee&.friendly_name || "Unassigned"
   end
+
+  def has_comments?
+    comments.any?
+  end
+
+  def comments_order_by_desc
+    comments.order(created_at: :desc)
+  end
 end

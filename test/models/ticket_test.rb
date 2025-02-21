@@ -43,4 +43,21 @@ class TicketTest < ActiveSupport::TestCase
     assert tickets(:two).priority_emoticon == "&#x1F610;"
     assert tickets(:three).priority_emoticon == "&#x1F525;"
   end
+
+  test "should return true if ticket has comments" do
+    ticket_with_comments = tickets(:one)
+    assert ticket_with_comments.has_comments?
+  end
+
+  test "should return false if ticket has no comments" do
+    ticket_without_comments = tickets(:two)
+    assert_not ticket_without_comments.has_comments?
+  end
+
+  test "should return comments ordered by descending creation date" do
+    ticket = tickets(:one)
+    comments = ticket.comments_order_by_desc
+    assert comments[0] == comments(:two)
+    assert comments[1] == comments(:one)
+  end
 end
