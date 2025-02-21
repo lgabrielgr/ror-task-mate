@@ -38,14 +38,22 @@
           </p>
           <p class="card-text">
             <strong>Comments</strong>
-            <ul class="list-group">
-              <li class="list-group-item">
-                <strong>John Doe:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis, ligula congue cursus sodales, nulla mi viverra ipsum, sit amet hendrerit turpis diam a neque. Praesent quis blandit elit.
-              </li>
-              <li class="list-group-item">
-                <strong>Jane Smith:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis, ligula congue cursus sodales, nulla mi viverra ipsum, sit amet hendrerit turpis diam a neque. Praesent quis blandit elit.
-              </li>
-            </ul>
+            <% if @ticket.has_comments? %>
+              <ul class="list-group">
+                <% @ticket.comments_order_by_desc.each do |comment| %>
+                  <li class="list-group-item">
+                    <small><%= comment.created_at %></small>
+                    <br /><strong><%= comment.author.friendly_name %>:</strong> <%= comment.body %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p>
+                <small>
+                  <i>No comments yet</i>
+                </small>
+              </p>
+            <% end %>
           </p>
         </div>
       </div>
