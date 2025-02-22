@@ -1,14 +1,14 @@
 class TeamsController < ApplicationController
-  TRUNCATE_LENGTH = 22
+  include Constants
 
   def tickets
     set_team
     authorize @team, :tickets?
     @tickets = @team.tickets
-    @tickets_to_do = @tickets.where(status: Ticket::TICKET_TO_DO_STATUS)
-    @tickets_in_progress = @tickets.where(status: Ticket::TICKET_IN_PROGRESS_STATUS)
-    @tickets_review = @tickets.where(status: Ticket::TICKET_REVIEW_STATUS)
-    @tickets_done = @tickets.where(status: Ticket::TICKET_DONE_STATUS)
+    @tickets_to_do = @tickets.where(status: TICKET_TO_DO_STATUS)
+    @tickets_in_progress = @tickets.where(status: TICKET_IN_PROGRESS_STATUS)
+    @tickets_review = @tickets.where(status: TICKET_REVIEW_STATUS)
+    @tickets_done = @tickets.where(status: TICKET_DONE_STATUS)
   end
 
   def edit
