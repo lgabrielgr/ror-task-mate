@@ -1,18 +1,23 @@
 require "test_helper"
 
 class CommentPolicyTest < ActiveSupport::TestCase
-  def test_scope
+  test "admin_can_create_comment" do
+    user = users(:one)
+    comment = Comment.new
+    assert CommentPolicy.new(user, comment).create?
   end
 
-  def test_show
+  test "team_member_can_create_comment" do
+    user = users(:two)
+    ticket = tickets(:two)
+    comment = Comment.new(ticket: ticket)
+    assert CommentPolicy.new(user, comment).create?
   end
 
-  def test_create
-  end
-
-  def test_update
-  end
-
-  def test_destroy
+  test "non_team_member_cannot_create_comment" do
+    user = users(:three)
+    ticket = tickets(:two)
+    comment = Comment.new(ticket: ticket)
+    assert_not CommentPolicy.new(user, comment).create?
   end
 end

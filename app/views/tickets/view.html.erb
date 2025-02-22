@@ -48,7 +48,12 @@
               <ul class="list-group">
                 <% @ticket.comments_order_by_desc.each do |comment| %>
                   <li class="list-group-item">
-                    <small><%= comment.created_at %></small>
+                    <small>
+                      <%= comment.created_at %>
+                      <% if policy(comment).edit? %>
+                        <%= link_to "Edit", edit_comment_path(@ticket, comment) %>
+                      <% end %>
+                    </small>
                     <br /><strong><%= comment.author.friendly_name %>:</strong> <%= comment.body %>
                   </li>
                 <% end %>
