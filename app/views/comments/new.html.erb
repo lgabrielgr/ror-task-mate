@@ -3,7 +3,7 @@
     <%= form_with(model: @comment, url: create_comment_path, local: true) do |form| %>
       <div class="mb-3">
         <%= form.label :body, "Comment", class: "form-label" %>
-        <%= form.text_area :body, class: "form-control", rows: 5 %>
+        <%= form.text_area :body, class: "form-control", rows: 5, placeholder: "Enter your comment here..." %>
       </div>
       <div class="mt-3">
         <%= form.submit "Create Comment", class: "btn btn-primary" %>
