@@ -11,6 +11,6 @@ class Team < ApplicationRecord
   end
 
   def is_team_member?(user)
-    members.include?(user)
+    members.include?(user) || owner == user
   end
 end
