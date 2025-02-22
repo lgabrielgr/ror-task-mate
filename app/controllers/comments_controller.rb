@@ -18,6 +18,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    set_ticket
+    @comment = Comment.find_by(id: params[:comment_id])
+    authorize @comment, :edit?
+  end
+
   private
 
   def set_ticket
