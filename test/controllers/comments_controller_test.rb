@@ -26,4 +26,16 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     get new_comment_path(tickets(:one))
     assert_redirected_to root_path
   end
+
+  test "update_comment_redirects_on_success" do
+    sign_in users(:one)
+    patch comment_path(tickets(:one), comments(:one)), params: { comment: { body: "Updated comment" } }
+    assert_redirected_to ticket_view_path(tickets(:one))
+  end
+
+  test "unauthorized_user_cannot_update_comment" do
+    sign_in users(:three)
+    patch comment_path(tickets(:one), comments(:one)), params: { comment: { body: "Updated comment" } }
+    assert_redirected_to root_path
+  end
 end

@@ -20,4 +20,16 @@ class CommentPolicyTest < ActiveSupport::TestCase
     comment = Comment.new(ticket: ticket)
     assert_not CommentPolicy.new(user, comment).create?
   end
+
+  test "author_can_edit_comment" do
+    user = users(:one)
+    comment = comments(:one)
+    assert CommentPolicy.new(user, comment).edit?
+  end
+
+  test "non_author_cannot_edit_comment" do
+    user = users(:two)
+    comment = comments(:one)
+    assert_not CommentPolicy.new(user, comment).edit?
+  end
 end

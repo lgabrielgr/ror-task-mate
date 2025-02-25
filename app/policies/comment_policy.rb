@@ -13,7 +13,10 @@ class CommentPolicy
   end
 
   def edit?
-    puts "Comment id: #{@comment.id}, Author: #{@comment.author.friendly_name}, current_user: #{@user.friendly_name}"
     @comment.author == @user
+  end
+
+  def update?
+    edit?
   end
 end

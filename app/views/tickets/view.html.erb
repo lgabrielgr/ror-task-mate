@@ -55,6 +55,12 @@
                       <% end %>
                     </small>
                     <br /><strong><%= comment.author.friendly_name %>:</strong> <%= comment.body %>
+                    <% if comment.edited? %>
+                      <br />
+                      <small>
+                        <i>(Edited)</i>
+                      </small>
+                    <% end %>
                   </li>
                 <% end %>
               </ul>

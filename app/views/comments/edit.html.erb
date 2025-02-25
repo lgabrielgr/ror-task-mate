@@ -1,1 +1,14 @@
-TODO
+<div class="d-flex justify-content-center">
+  <div class="w-50">
+    <%= form_for(@comment, url: comment_path(@ticket, @comment)) do |form| %>
+      <div class="mb-3">
+        <%= form.label :body, "Comment", class: "form-label" %>
+        <%= form.text_area :body, class: "form-control", rows: 5 %>
+      </div>
+      <div class="mt-3">
+        <%= form.submit "Save", class: "btn btn-primary mt-3" %>
+        <%= link_to "Cancel", ticket_view_path(@ticket), class: "btn btn-secondary mt-3"  %>
+      </div>
+    <% end %>
+  </div>
+</div>
