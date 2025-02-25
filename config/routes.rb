@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "ticket/:id/comment/new" => "comments#new", as: :new_comment
   post "ticket/:id/comment" => "comments#create", as: :create_comment
   get "ticket/:id/comment/:comment_id/edit" => "comments#edit", as: :edit_comment
+  patch "ticket/:id/comment/:comment_id" => "comments#update", as: :comment
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

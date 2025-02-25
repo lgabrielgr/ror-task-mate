@@ -24,6 +24,18 @@ class CommentsController < ApplicationController
     authorize @comment, :edit?
   end
 
+  def update
+    set_ticket
+    @comment = Comment.find_by(id: params[:comment_id])
+    authorize @comment, :update?
+    @comment.edited = true
+    if @comment.update(comment_params)
+      redirect_to ticket_view_path(@ticket)
+    else
+      render "edit"
+    end
+  end
+
   private
 
   def set_ticket
