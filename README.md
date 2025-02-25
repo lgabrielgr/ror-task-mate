@@ -1,1 +1,105 @@
-# ror-task-mate
+# TaskMate (ror-task-mate)
+
+TaskMate is a collaborative task management application built with Ruby on Rails. This is a sample project designed to organize tasks, assign them to team members, and collaborate in a shared workspace.
+
+---
+
+## Features
+
+### Core Features
+- **User Authentication**: Secure login, logout, and registration for users.
+- **Task Management**: Create, edit, delete, and view tasks with attributes like:
+    - Title
+    - Description
+    - Due Date
+    - Status (To Do, In Progress, Completed).
+- **Team Collaboration**:
+    - Create and manage teams.
+    - Invite users to join teams.
+    - Assign tasks to specific team members.
+- **Authorization**:
+    - Only team members can manage or view their team's tasks.
+    - Role-based permissions (e.g., admin vs member).
+- **Task Comments**: Add comments to tasks for discussions and updates.
+
+### Optional Advanced Features
+- **Notifications**: Email or in-app notifications for task updates.
+- **Search and Filters**: Search tasks by keywords or filter by status, due date, or assignee.
+- **API Integration**: Expose tasks and team data through a RESTful API.
+
+---
+
+## Tech Stack
+
+- **Backend**: Ruby on Rails
+- **Database**: PostgreSQL
+- **Authentication**: Devise gem
+- **Authorization**: Pundit or CanCanCan
+- **Front-End**: Rails default views with Bootstrap
+- **Background Jobs**: Sidekiq (for notifications or background processes)
+- **Testing**: RSpec
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+1. Ruby 3.0+ and Rails 7+ installed.
+2. PostgreSQL installed and running.
+3. Bundler installed (`gem install bundler`).
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/taskmate.git
+   cd taskmate
+   ```
+
+2. Install dependencies:
+   ```bash
+   bundle install
+   ```
+
+3. Set up the database:
+   ```bash
+   rails db:create db:migrate
+   ```
+    Optionally, you can seed the database with sample data:
+    ```bash
+   rails db:seed
+   ```
+
+4. Start the Rails server:
+   ```bash
+   rails server
+   ```
+
+5. Open the application in your browser at [http://localhost:3000](http://localhost:3000).
+
+---
+
+## Usage
+
+1. **Sign up**: Create an account or log in with an existing one.
+2. **Create a Team**: Navigate to the "Teams" section to create a new team.
+3. **Manage Tasks**: Add tasks, assign them to team members, and update their status as they progress.
+4. **Collaborate**: Use the comments feature to discuss tasks with your team.
+
+---
+
+## Project Structure
+
+```plaintext
+app/
+├── controllers/    # Controllers for handling requests
+├── models/         # Application models (e.g., User, Task, Team)
+├── views/          # Views for rendering HTML pages
+├── mailers/        # Mailers for email notifications
+├── jobs/           # Background job definitions
+├── policies/       # Authorization policies (e.g., Pundit)
+config/
+├── routes.rb       # Application routes
+├── database.yml    # Database configuration
+```
