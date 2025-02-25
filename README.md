@@ -1,6 +1,6 @@
-# TaskMate
+# TaskMate (ror-task-mate)
 
-TaskMate is a collaborative task management application built with Ruby on Rails. This project is designed to help teams organize tasks, assign them to team members, and collaborate effectively in a shared workspace.
+TaskMate is a collaborative task management application built with Ruby on Rails. This is a sample project designed to organize tasks, assign them to team members, and collaborate in a shared workspace.
 
 ---
 
@@ -23,11 +23,9 @@ TaskMate is a collaborative task management application built with Ruby on Rails
 - **Task Comments**: Add comments to tasks for discussions and updates.
 
 ### Optional Advanced Features
-- **Notifications**: Email or in-app notifications for task updates or approaching deadlines.
-- **Activity Feed**: Dashboard showing recent actions, such as task completion or new comments.
+- **Notifications**: Email or in-app notifications for task updates.
 - **Search and Filters**: Search tasks by keywords or filter by status, due date, or assignee.
 - **API Integration**: Expose tasks and team data through a RESTful API.
-- **Production Deployment**: Deploy the application to a cloud platform like Heroku or Render.
 
 ---
 
@@ -37,10 +35,9 @@ TaskMate is a collaborative task management application built with Ruby on Rails
 - **Database**: PostgreSQL
 - **Authentication**: Devise gem
 - **Authorization**: Pundit or CanCanCan
-- **Front-End**: Rails default views with Bootstrap (or another CSS framework)
+- **Front-End**: Rails default views with Bootstrap
 - **Background Jobs**: Sidekiq (for notifications or background processes)
-- **Testing**: RSpec or Minitest
-- **Deployment**: Heroku or Render
+- **Testing**: RSpec
 
 ---
 
@@ -67,7 +64,11 @@ TaskMate is a collaborative task management application built with Ruby on Rails
 
 3. Set up the database:
    ```bash
-   rails db:create db:migrate db:seed
+   rails db:create db:migrate
+   ```
+    Optionally, you can seed the database with sample data:
+    ```bash
+   rails db:seed
    ```
 
 4. Start the Rails server:
@@ -101,39 +102,4 @@ app/
 config/
 ├── routes.rb       # Application routes
 ├── database.yml    # Database configuration
-``` 
-
----
-
-## Roadmap
-
-1. Implement core features: authentication, task management, and team collaboration.
-2. Add notifications and an activity feed.
-3. Implement search and filtering for tasks.
-4. Build and document a simple REST API.
-5. Deploy to a production environment.
-
----
-
-## Contributing
-
-Contributions are welcome! To get started:
-
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature/new-feature`).
-3. Commit your changes (`git commit -m 'Add new feature'`).
-4. Push to the branch (`git push origin feature/new-feature`).
-5. Create a pull request.
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-## Acknowledgements
-
-- Thanks to the creators of Ruby on Rails and the open-source libraries that power this project.
-- Inspired by various task management tools like Trello and Asana.
+```
