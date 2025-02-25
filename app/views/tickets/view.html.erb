@@ -1,0 +1,79 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Team: <%= @team.name %></h2>
+        <div>
+          <a class="btn btn-secondary" href="<%= team_tickets_path(team_id: @team.id) %>">Back to Team</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <p class="card-text"><strong>Assignee:</strong> <%= @ticket.assignee_name %></p>
+          <p class="card-text"><strong>Reporter:</strong> <%= @ticket.creator.friendly_name %></p>
+          <p class="card-text"><strong>Due date:</strong> <%= @ticket.due_date %> <%= @ticket.due_date < Date.today ? "&#128680;".html_safe : "" %></p>
+          <p class="card-text"><strong>Priority:</strong> <%= @ticket.human_readable_priority %></p>
+          <p class="card-text"><strong>Status:</strong> <%= @ticket.human_readable_status %></p>
+          <% if policy(@ticket).edit? %>
+            <div class="mb-2">
+              <%= link_to "Edit", ticket_edit_path(@ticket), class: "btn btn-primary btn-same-size" %>
+            </div>
+          <% end %>
+          <% if policy(@ticket).destroy? %>
+            <div class="mb-2">
+              <%= link_to "Delete", ticket_destroy_path(@ticket), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-same-size" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <p class="card-text">
+            <strong>Title</strong>
+            <br /><%= @ticket.title %>
+          </p>
+          <p class="card-text">
+            <strong>Description</strong>
+            <br /><%= @ticket.description %>
+          </p>
+          <div class="card-text">
+            <div class="d-flex justify-content-between align-items-center">
+              <strong>Comments</strong>
+              <% if policy(Comment).new? %>
+                <%= link_to "Add Comment", new_comment_path(id: @ticket.id), class: "btn btn-primary" %>
+              <% end %>
+            </div>
+            <br />
+            <% if @ticket.has_comments? %>
+              <ul class="list-group">
+                <% @ticket.comments_order_by_desc.each do |comment| %>
+                  <li class="list-group-item">
+                    <small>
+                      <%= comment.created_at %>
+                      <% if policy(comment).edit? %>
+                        <%= link_to "Edit", edit_comment_path(@ticket, comment) %>
+                      <% end %>
+                    </small>
+                    <br /><strong><%= comment.author.friendly_name %>:</strong> <%= comment.body %>
+                    <% if comment.edited? %>
+                      <br />
+                      <small>
+                        <i>(Edited)</i>
+                      </small>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p>
+                <small>
+                  <i>No comments yet</i>
+                </small>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

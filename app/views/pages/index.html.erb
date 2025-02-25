@@ -1,3 +1,44 @@
-<div class="d-flex justify-content-center align-items-center vh-100">
-  <h1 class="text-center">Task Mate App</h1>
-</div>
+<% if current_user.no_teams_assigned? %>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h3>No Teams Assigned</h3>
+      </div>
+      <div class="card-body">
+        <p>You have not been assigned to any teams yet. Please contact your administrator.</p>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <div class="d-flex justify-content-between align-items-center">
+          <h3>Your Teams</h3>
+          <% if TeamPolicy.new(current_user).create? %>
+            <div>
+              <a class="btn btn-info" href="<%= new_team_path %>">Create new team</a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="list-group">
+          <% current_user.teams.each do |team| %>
+            <li class="list-group-item">
+              <a href="<%= team_tickets_path(team_id: team.id) %>">
+                <%= team.name %>: <%= truncate(team.description, length: 90, omission: "...") %>
+                <% if policy(team).destroy? %>
+                  <%= link_to "Delete", team_destroy_path(team), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger float-right ml-2" %>
+                <% end %>
+                <% if policy(team).edit? %>
+                  <a href="<%= team_edit_path(team_id: team.id) %>" class="btn btn-primary float-right">Edit</a>
+                <% end %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h2>Edit Team</h2>
+    </div>
+    <div class="card-body">
+      <%= form_for(@team) do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :owner_id, "Owner" %>
+          <%= f.collection_select :owner_id, User.all, :id, :friendly_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          Creator: <%= @team.creator.friendly_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :member_ids, "Members" %>
+          <%= f.collection_select :member_ids, User.all, :id, :friendly_name, { include_hidden: false, multiple: true }, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Update Team", class: "btn btn-primary" %>
+          <a href="<%= root_path(team_id: @team.id) %>" class="btn btn-secondary">Cancel</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

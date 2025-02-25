@@ -1,0 +1,31 @@
+<%= form_with(model: @ticket, url: create_ticket_path(@team), local: true, class: "form-horizontal") do |form| %>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h2>New Ticket</h2>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <%= form.label :title, class: "form-label" %>
+          <%= form.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :description, class: "form-label" %>
+          <%= form.text_area :description, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :assignee_id, "Assignee", class: "form-label" %>
+          <%= form.collection_select :assignee_id, @team.members, :id, :friendly_name, { prompt: "Select Assignee" }, { class: "form-control" } %>
+        </div>
+        <%= form_group_select(form, :priority, TicketsController::TICKET_PRIORITY_OPTIONS_FOR_SELECTION, "Select Priority") %>
+        <%= form_group_select(form, :status, TicketsController::TICKET_STATUS_OPTIONS_FOR_SELECTION, "Select Status") %>
+        <div class="form-group">
+          <%= form.label :due_date, class: "form-label" %>
+          <%= form.date_field :due_date, class: "form-control" %>
+        </div>
+        <%= form.submit "Create Ticket", class: "btn btn-primary mt-3" %>
+        <%= link_to "Cancel", team_tickets_path(@team), class: "btn btn-secondary mt-3 ml-2" %>
+      </div>
+    </div>
+  </div>
+<% end %>

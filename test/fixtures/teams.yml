@@ -1,0 +1,11 @@
+one:
+  id: 1
+  name: "Team Alpha"
+  owner_id: 1
+  creator_id: 1
+
+two:
+  id: 2
+  name: "Team Beta"
+  owner_id: 1
+  creator_id: 1

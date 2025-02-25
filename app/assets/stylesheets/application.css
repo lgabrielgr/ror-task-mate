@@ -11,3 +11,7 @@
 body {
     background-color: lightblue;
 }
+
+.btn-same-size {
+    width: 80px;
+}

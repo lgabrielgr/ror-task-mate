@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>
+          Team: <%= @team.name %>
+          <span style="font-size: smaller;">
+            <% if @team.tickets.count == 0 %>
+              (No tickets)
+            <% else %>
+              (<%= @team.tickets.count %> <%= @team.tickets.count == 1 ? "ticket" : "tickets" %> in total)
+            <% end %>
+          </span>
+        </h2>
+        <div>
+          <a class="btn btn-info" href="<%= new_ticket_path %>">Create new ticket</a>
+          <a class="btn btn-secondary" href="<%= root_path %>">Select other team</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3">
+          <h3 class="text-center text-info">TO DO</h3>
+          <% @tickets_to_do.each do |ticket| %>
+            <%= ticket_card(ticket) %>
+          <% end %>
+        </div>
+        <div class="col-md-3">
+          <h3 class="text-center text-warning">IN PROGRESS</h3>
+          <% @tickets_in_progress.each do |ticket| %>
+            <%= ticket_card(ticket) %>
+          <% end %>
+        </div>
+        <div class="col-md-3">
+          <h3 class="text-center text-primary">REVIEW</h3>
+          <% @tickets_review.each do |ticket| %>
+            <%= ticket_card(ticket) %>
+          <% end %>
+        </div>
+        <div class="col-md-3">
+          <h3 class="text-center text-success">DONE</h3>
+          <% @tickets_done.each do |ticket| %>
+            <%= ticket_card(ticket) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
