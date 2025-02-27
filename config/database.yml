@@ -17,3 +17,5 @@ test:
 production:
   <<: *default
   database: taskmate_prod
+  username: taskmate
+  password: <%= ENV['DATABASE_PASSWORD'] %>
