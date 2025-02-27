@@ -63,20 +63,20 @@ TaskMate is a collaborative task management application built with Ruby on Rails
    bundle install
    ```
 
-3. Set up the database:
+3. Update .env file with your PostgreSQL credentials:
+   ```plaintext
+   DB_PASSWORD='<your_password>'
+   DB_USERNAME='taskmate' # or your PostgreSQL username if different
+   DB_HOST='localhost' # or your PostgreSQL host if different
+   ```
+
+4. Set up the database:
    ```bash
    rails db:create db:migrate
    ```
     Optionally, you can seed the database with sample data:
     ```bash
    rails db:seed
-   ```
-
-4. Update .env file with your PostgreSQL credentials:
-   ```plaintext
-   DB_PASSWORD='<your_password>'
-   DB_USERNAME='taskmate' # or your PostgreSQL username if different
-   DB_HOST='localhost' # or your PostgreSQL host if different
    ```
 
 5. Start the Rails server:
