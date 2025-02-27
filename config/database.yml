@@ -11,8 +11,10 @@ development:
   database: taskmate_dev
 
 test:
-  <<: *default
-  database: taskmate_test
+  adapter: sqlite3
+  database: storage/test.sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 production:
   <<: *default
