@@ -55,6 +55,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Environment variables for Rails
+  gem "dotenv-rails"
 end
 
 group :development do
