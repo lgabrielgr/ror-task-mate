@@ -40,12 +40,12 @@ Rails.application.configure do
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              ENV.fetch('SMTP_SERVER'),
-    port:                 ENV.fetch('SMTP_PORT'),
-    domain:               ENV.fetch('SMTP_DOMAIN', 'taskmate.com'),
-    user_name:            ENV.fetch('SMTP_USERNAME'),
-    password:             ENV.fetch('SMTP_PASSWORD'),
-    authentication:       'plain',
+    address:              ENV.fetch("SMTP_SERVER"),
+    port:                 ENV.fetch("SMTP_PORT"),
+    domain:               ENV.fetch("SMTP_DOMAIN", "taskmate.com"),
+    user_name:            ENV.fetch("SMTP_USERNAME"),
+    password:             ENV.fetch("SMTP_PASSWORD"),
+    authentication:       "plain",
     enable_starttls_auto: true
   }
 
