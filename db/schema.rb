@@ -10,25 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_20_040918) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_011401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
     t.boolean "edited", default: false, null: false
-    t.integer "author_id", null: false
-    t.integer "ticket_id", null: false
+    t.bigint "author_id", null: false
+    t.bigint "ticket_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["ticket_id"], name: "index_comments_on_ticket_id"
   end
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "owner_id", null: false
+    t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "creator_id", null: false
@@ -36,8 +51,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_20_040918) do
   end
 
   create_table "teams_users", id: false, force: :cascade do |t|
-    t.integer "team_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "team_id", null: false
+    t.bigint "user_id", null: false
     t.index ["team_id"], name: "index_teams_users_on_team_id"
     t.index ["user_id"], name: "index_teams_users_on_user_id"
   end
@@ -46,8 +61,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_20_040918) do
     t.string "title", null: false
     t.text "description"
     t.integer "status", default: 0
-    t.integer "assignee_id"
-    t.integer "team_id", null: false
+    t.bigint "assignee_id"
+    t.bigint "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "due_date"
