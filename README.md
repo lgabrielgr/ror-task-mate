@@ -36,7 +36,7 @@ TaskMate is a collaborative task management application built with Ruby on Rails
 - **Authentication**: Devise gem
 - **Authorization**: Pundit or CanCanCan
 - **Front-End**: Rails default views with Bootstrap
-- **Background Jobs**: Sidekiq (for notifications or background processes)
+- **Background Jobs**: DelayedJob ActiveRecord
 - **Testing**: RSpec
 
 ---
@@ -63,12 +63,7 @@ TaskMate is a collaborative task management application built with Ruby on Rails
    bundle install
    ```
 
-3. Update .env file with your PostgreSQL credentials:
-   ```plaintext
-   DB_PASSWORD='<your_password>'
-   DB_USERNAME='taskmate' # or your PostgreSQL username if different
-   DB_HOST='localhost' # or your PostgreSQL host if different
-   ```
+3. Create/Update .env file from .env.sample file and fill up your PostgreSQL and SMTP information
 
 4. Set up the database:
    ```bash
@@ -83,8 +78,12 @@ TaskMate is a collaborative task management application built with Ruby on Rails
    ```bash
    rails server
    ```
+6. Start the Delayed Job server:
+   ```bash
+   bin/delayed_job start
+   ```
 
-5. Open the application in your browser at [http://localhost:3000](http://localhost:3000).
+7. Open the application in your browser at [http://localhost:3000](http://localhost:3000).
 
 ---
 
