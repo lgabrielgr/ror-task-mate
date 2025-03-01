@@ -30,6 +30,7 @@ class TicketsController < ApplicationController
     set_ticket
     authorize @ticket, :update?
     if @ticket.update(ticket_params)
+      TicketNotificationJob.perform_later(@ticket.assignee, @ticket, :updated)
       redirect_to ticket_view_path(@ticket)
     else
       render "edit"
