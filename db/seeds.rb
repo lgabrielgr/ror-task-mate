@@ -1,16 +1,16 @@
-LEO_USER_EMAIL = "leo.doe@test.com"
-GABRIEL_USER_EMAIL = "gabriel.doe@test.com"
-LULA_USER_EMAIL = "lula.doe@test.com"
-ZULY_USER_EMAIL = "zuly.doe@test.com"
+LEO_USER_EMAIL = "leo.doe@yopmail.com"
+GABRIEL_USER_EMAIL = "gabriel.smith@yopmail.com"
+LULA_USER_EMAIL = "lula.jane@yopmail.com"
+ZULY_USER_EMAIL = "zuly.trasher@yopmail.com"
 
 TEAM_RUBY_API_NAME_SAMPLE = "Ruby API"
 TEAM_JAVA_API_NAME_SAMPLE = "Java API"
 
 # Sample Users
 User.create!(first_name: "Leo", last_name: "Doe", email: LEO_USER_EMAIL, password: "zaq12wsx", admin: true)
-User.create!(first_name: "Gabriel", last_name: "Doe", email: GABRIEL_USER_EMAIL, password: "zaq12wsx")
-User.create!(first_name: "Lula", last_name: "Doe", email: LULA_USER_EMAIL, password: "zaq12wsx")
-User.create!(first_name: "Zuly", last_name: "Doe", email: ZULY_USER_EMAIL, password: "zaq12wsx")
+User.create!(first_name: "Gabriel", last_name: "Smith", email: GABRIEL_USER_EMAIL, password: "zaq12wsx")
+User.create!(first_name: "Lula", last_name: "Jane", email: LULA_USER_EMAIL, password: "zaq12wsx")
+User.create!(first_name: "Zuly", last_name: "Trasher", email: ZULY_USER_EMAIL, password: "zaq12wsx")
 
 # Sample Teams
 Team.create!(name: TEAM_RUBY_API_NAME_SAMPLE, description: "Microservice serving as API in Ruby lang",
