@@ -30,7 +30,7 @@ class TicketsController < ApplicationController
     set_ticket
     authorize @ticket, :update?
     if @ticket.update(ticket_params)
-      TicketNotificationJob.perform_later(@ticket.assignee, @ticket, :updated)
+      send_ticket_update_notification
       redirect_to ticket_view_path(@ticket)
     else
       render "edit"
@@ -50,6 +50,7 @@ class TicketsController < ApplicationController
     authorize @ticket, :create?
     @ticket.creator = current_user
     if @ticket.save
+      TicketNotificationJob.perform_later(@ticket.assignee, @ticket, :assigned)
       redirect_to team_tickets_path(@team)
     else
       render "new"
@@ -64,6 +65,14 @@ class TicketsController < ApplicationController
   end
 
   private
+
+  def send_ticket_update_notification
+    if @ticket.previous_changes.include?(:assignee_id)
+      TicketNotificationJob.perform_later(@ticket.assignee, @ticket, :assigned)
+    else
+      TicketNotificationJob.perform_later(@ticket.assignee, @ticket, :updated)
+    end
+  end
 
   def set_ticket
     @ticket = Ticket.find(params[:id])

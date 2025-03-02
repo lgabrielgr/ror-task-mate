@@ -6,6 +6,8 @@ class TicketNotificationJob < ApplicationJob
     case action
     when :updated
       TicketMailer.ticket_updated(user, ticket).deliver_later
+    when :assigned
+      TicketMailer.ticket_assigned(user, ticket).deliver_later
     else
       Rails.logger.error("Unknown action for ticket notification job: #{action}")
     end
