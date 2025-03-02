@@ -63,7 +63,10 @@ TaskMate is a collaborative task management application built with Ruby on Rails
    bundle install
    ```
 
-3. Create/Update .env file from .env.sample file and fill up your PostgreSQL and SMTP information
+3. Create/Update .env file from .env.sample file and fill up your PostgreSQL and SMTP information (if using gmail see [here](https://support.google.com/accounts/answer/185833?hl=en) for apps password)
+   ```bash
+   cp .env.sample .env
+   ```
 
 4. Set up the database:
    ```bash
