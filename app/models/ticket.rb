@@ -38,7 +38,7 @@ class Ticket < ApplicationRecord
   end
 
   def assignee_name
-    assignee&.friendly_name || "Unassigned"
+    assignee&.first_name || "Unassigned"
   end
 
   def has_comments?
