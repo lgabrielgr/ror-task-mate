@@ -1,0 +1,12 @@
+<h1>Ticket Updated</h1>
+<p>Hello <%= @user.friendly_name %>,</p>
+<p>The following ticket has been updated:</p>
+<p><b>Title</b>: <%= @ticket.title %></p>
+<p><b>Assignee</b>: <%= @ticket.assignee.friendly_name %></p>
+<p><b>Status</b>: <%= @ticket.human_readable_status %></p>
+<p><b>Priority</b>: <%= @ticket.human_readable_priority %></p>
+<p><b>Due date</b>: <%= @ticket.due_date %></p>
+<p><b>Description</b>: <%= @ticket.description %></p>
+<p>Click <a href="<%= ticket_url(@ticket) %>">here</a> to view the ticket.</p>
+<p>Thank you,</p>
+<p>Task mate team</p>

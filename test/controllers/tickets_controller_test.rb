@@ -35,7 +35,9 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update ticket if user is assigned to team" do
     sign_in users(:one)
-    patch ticket_url(id: 1), params: { ticket: { title: "Updated Title", description: "Updated Description" } }
+    assert_enqueued_with(job: TicketNotificationJob) do
+      patch ticket_url(id: 1), params: { ticket: { title: "Updated Title", description: "Updated Description" } }
+    end
     assert_redirected_to ticket_view_path(id: 1)
   end
 
@@ -49,9 +51,11 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
   test "should create ticket" do
     sign_in users(:one)
     assert_difference("Ticket.count") do
-      post create_ticket_url(team_id: teams(:one).id), params: { ticket: { title: "New Ticket", description: "New Description",
-                                                                          priority: Ticket::TICKET_LOW_PRIORITY,
-                                                                          status: Ticket::TICKET_TO_DO_STATUS } }
+      assert_enqueued_with(job: TicketNotificationJob) do
+        post create_ticket_url(team_id: teams(:one).id), params: { ticket: { title: "New Ticket", description: "New Description",
+                                                                             priority: Ticket::TICKET_LOW_PRIORITY,
+                                                                             status: Ticket::TICKET_TO_DO_STATUS } }
+      end
     end
     assert_redirected_to team_tickets_path(teams(:one))
   end

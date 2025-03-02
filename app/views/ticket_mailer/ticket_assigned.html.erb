@@ -1,0 +1,6 @@
+<h1>Ticket Assigned</h1>
+<p>Hello <%= @user.first_name %>,</p>
+<p>A ticket has been assigned to you. You can view the ticket by clicking the link below:</p>
+<p><%= link_to 'View Ticket', ticket_url(@ticket) %></p>
+<p>Thank you,</p>
+<p>Task mate team</p>

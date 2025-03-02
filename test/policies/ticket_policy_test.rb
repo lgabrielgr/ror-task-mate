@@ -60,4 +60,16 @@ class TicketPolicyTest < ActiveSupport::TestCase
     ticket = tickets(:four)
     assert_not TicketPolicy.new(user, ticket).destroy?
   end
+
+  test "user_can_comment_on_ticket" do
+    user = users(:one)
+    ticket = tickets(:one)
+    assert TicketPolicy.new(user, ticket).can_comment?
+  end
+
+  test "user_cannot_comment_on_ticket" do
+    user = users(:two)
+    ticket = tickets(:four)
+    assert_not TicketPolicy.new(user, ticket).can_comment?
+  end
 end

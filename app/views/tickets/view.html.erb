@@ -39,7 +39,7 @@
           <div class="card-text">
             <div class="d-flex justify-content-between align-items-center">
               <strong>Comments</strong>
-              <% if policy(Comment).new? %>
+              <% if policy(@ticket).can_comment? %>
                 <%= link_to "Add Comment", new_comment_path(id: @ticket.id), class: "btn btn-primary" %>
               <% end %>
             </div>
