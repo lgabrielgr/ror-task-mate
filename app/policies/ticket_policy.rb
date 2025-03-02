@@ -28,10 +28,14 @@ class TicketPolicy
     create?
   end
 
+  def can_comment?
+    can_view_edit_ticket?
+  end
+
   private
 
   def can_view_edit_ticket?
-    @user.can_see_ticket?(@ticket)
+    @user.can_see_ticket?(@ticket) || @user.admin?
   end
 
   def can_create_ticket?
