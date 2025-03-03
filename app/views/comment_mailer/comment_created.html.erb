@@ -1,0 +1,9 @@
+<h1>New comment</h1>
+<p>Hello <%= @user.first_name %>, a new comment was added on ticket <strong><%= @ticket.title %></strong></p>
+<p>------------------------------------------------------------------------------------------------------</p>
+<p><strong><%= @comment.author.first_name %></strong> added new comment:</p>
+<p><i><%= simple_format(@comment.body) %></i></p>
+<p>------------------------------------------------------------------------------------------------------</p>
+<p><%= link_to 'View Ticket', ticket_url(@ticket) %></p>
+<p>Thank you,</p>
+<p>Task mate team</p>

@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     @comment.author = current_user
     authorize @comment, :create?
     if @comment.save
+      CommentNotificationJob.perform_later(@ticket.assignee, @comment, :created)
       redirect_to ticket_view_path(@ticket)
     else
       render "new"
@@ -30,6 +31,7 @@ class CommentsController < ApplicationController
     authorize @comment, :update?
     @comment.edited = true
     if @comment.update(comment_params)
+      CommentNotificationJob.perform_later(@ticket.assignee, @comment, :edited)
       redirect_to ticket_view_path(@ticket)
     else
       render "edit"
