@@ -49,7 +49,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   test "should create team" do
     sign_in users(:one)
     assert_difference("Team.count") do
-      post create_team_url, params: { team: { name: "New Team", description: "New Description",
+      post create_team_url, params: { team: { name: "New Team", code_identifier: "NTM", description: "New Description",
                                              owner_id: users(:one).id, member_ids: [ users(:one).id ] } }
     end
     assert_redirected_to root_path
