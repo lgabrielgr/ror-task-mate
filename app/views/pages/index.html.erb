@@ -27,7 +27,7 @@
           <% current_user.teams.each do |team| %>
             <li class="list-group-item">
               <a href="<%= team_tickets_path(team_id: team.id) %>">
-                <%= team.name %>: <%= truncate(team.description, length: 90, omission: "...") %>
+                <%= team.name %>: <%= truncate(team.description, length: 80, omission: "...") %>
                 <% if policy(team).destroy? %>
                   <%= link_to "Delete", team_destroy_path(team), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger float-right ml-2" %>
                 <% end %>

@@ -32,4 +32,10 @@ class TeamTest < ActiveSupport::TestCase
     assert team.is_team_member?(users(:two))
     assert_not team.is_team_member?(users(:three))
   end
+
+  test "should upcase code_identifier before save" do
+    team = Team.new(name: "Test Team", code_identifier: "abcd", owner: users(:one), creator: users(:one))
+    team.save
+    assert_equal "ABCD", team.code_identifier
+  end
 end

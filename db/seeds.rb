@@ -13,12 +13,12 @@ User.create!(first_name: "Lula", last_name: "Jane", email: LULA_USER_EMAIL, pass
 User.create!(first_name: "Zuly", last_name: "Trasher", email: ZULY_USER_EMAIL, password: "zaq12wsx")
 
 # Sample Teams
-Team.create!(name: TEAM_RUBY_API_NAME_SAMPLE, description: "Microservice serving as API in Ruby lang",
+Team.create!(name: TEAM_RUBY_API_NAME_SAMPLE, description: "Microservice serving as API in Ruby lang", code_identifier: "RUBY",
              owner_id: User.find_by(email: LEO_USER_EMAIL).id, creator_id: User.find_by(email: LEO_USER_EMAIL).id).tap do |team|
   team.members << User.find_by(email: ZULY_USER_EMAIL)
   team.members << User.find_by(email: LEO_USER_EMAIL)
 end
-Team.create!(name: TEAM_JAVA_API_NAME_SAMPLE, description: "Microservice serving as API in Java lang",
+Team.create!(name: TEAM_JAVA_API_NAME_SAMPLE, description: "Microservice serving as API in Java lang", code_identifier: "JAVA",
              owner_id: User.find_by(email: LEO_USER_EMAIL).id, creator_id: User.find_by(email: LEO_USER_EMAIL).id).tap do |team|
   team.members << User.find_by(email: GABRIEL_USER_EMAIL)
   team.members << User.find_by(email: LULA_USER_EMAIL)
