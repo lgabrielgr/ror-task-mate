@@ -1,11 +1,13 @@
 one:
   id: 1
   name: "Team Alpha"
+  code_identifier: "TALP"
   owner_id: 1
   creator_id: 1
 
 two:
   id: 2
   name: "Team Beta"
+  code_identifier: "TBET"
   owner_id: 1
   creator_id: 1

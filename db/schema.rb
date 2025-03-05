@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_011401) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_05_003038) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_011401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "creator_id", null: false
+    t.string "code_identifier", null: false
     t.index ["owner_id"], name: "index_teams_on_owner_id"
   end
 
