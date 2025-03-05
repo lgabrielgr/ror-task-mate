@@ -1,3 +1,5 @@
+![CI](https://github.com/lgabrielgr/ror-task-mate/actions/workflows/ci.yml/badge.svg)
+
 # TaskMate (ror-task-mate)
 
 TaskMate is a collaborative task management application built with Ruby on Rails. This is a sample project designed to organize tasks, assign them to team members, and collaborate in a shared workspace.
