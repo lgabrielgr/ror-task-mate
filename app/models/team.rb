@@ -3,7 +3,7 @@ class Team < ApplicationRecord
   belongs_to :creator, class_name: "User"
   has_and_belongs_to_many :members, class_name: "User"
   has_many :tickets, dependent: :destroy
-  before_save :upcase_code_identifier
+  before_create :upcase_code_identifier
 
   validates :name, presence: true
   validates :code_identifier, presence: true, uniqueness: true, length: { maximum: 4 }
