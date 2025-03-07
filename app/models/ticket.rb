@@ -4,10 +4,12 @@ class Ticket < ApplicationRecord
   belongs_to :creator, class_name: "User"
   belongs_to :team
   has_many :comments, dependent: :destroy
+  before_create :generate_code_identifier
 
   validates :title, presence: true
   validates :status, inclusion: { in: TICKET_STATUS_OPTIONS }
   validates :priority, inclusion: { in: TICKET_PRIORITY_OPTIONS }
+  validates :code_identifier, uniqueness: true
 
   def human_readable_priority
     case priority
@@ -47,5 +49,11 @@ class Ticket < ApplicationRecord
 
   def comments_order_by_desc
     comments.order(created_at: :desc)
+  end
+
+  private
+
+  def generate_code_identifier
+    self.code_identifier = "#{team.code_identifier}-#{team.tickets.count + 1}"
   end
 end
