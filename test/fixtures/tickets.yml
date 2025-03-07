@@ -7,6 +7,7 @@ one:
   creator_id: 1
   team_id: 1
   priority: 0
+  code_identifier: "TALP-1"
   due_date: 2014-01-01
 
 two:
@@ -18,6 +19,7 @@ two:
   creator_id: 1
   team_id: 1
   priority: 1
+  code_identifier: "TALP-2"
   due_date: 2014-01-01
 
 three:
@@ -29,6 +31,7 @@ three:
     creator_id: 1
     team_id: 1
     priority: 2
+    code_identifier: "TALP-3"
     due_date: 2014-01-01
 
 four:
@@ -40,4 +43,5 @@ four:
     creator_id: 1
     team_id: 2
     priority: 1
+    code_identifier: "TBET-1"
     due_date: 2014-01-01
