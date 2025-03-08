@@ -54,6 +54,8 @@ class Ticket < ApplicationRecord
   private
 
   def generate_code_identifier
-    self.code_identifier = "#{team.code_identifier}-#{team.tickets.count + 1}"
+    sequence_name = "ticket_code_identifier_seq_#{team.id}"
+    sequence_number = ActiveRecord::Base.connection.execute("SELECT nextval('#{sequence_name}')").first["nextval"]
+    self.code_identifier = "#{team.code_identifier}-#{sequence_number}"
   end
 end

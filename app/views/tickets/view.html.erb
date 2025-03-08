@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header bg-primary text-white">
       <div class="d-flex justify-content-between align-items-center">
-        <h2>Team: <%= @team.name %></h2>
+        <h2>Ticket: <%= @ticket.code_identifier %></h2>
         <div>
           <a class="btn btn-secondary" href="<%= team_tickets_path(team_id: @team.id) %>">Back to Team</a>
         </div>
@@ -28,10 +28,10 @@
           <% end %>
         </div>
         <div class="col-md-8">
-          <p class="card-text">
-            <strong>Title</strong>
-            <br /><%= @ticket.title %>
-          </p>
+          <div class="card-text">
+            <small>[<%= @ticket.code_identifier %>]</small>
+            <h3><%= @ticket.title %></h3>
+          </div>
           <p class="card-text">
             <strong>Description</strong>
             <br /><%= @ticket.description %>

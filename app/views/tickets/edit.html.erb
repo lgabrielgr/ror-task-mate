@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="card">
     <div class="card-header bg-primary text-white">
-      <h2>Edit Ticket</h2>
+      <h2>Ticket: <%= @ticket.code_identifier %></h2>
     </div>
     <div class="card-body">
       <%= form_for(@ticket) do |f| %>

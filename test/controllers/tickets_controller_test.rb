@@ -49,12 +49,14 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create ticket" do
+    Ticket.skip_callback(:create, :before, :generate_code_identifier)
     sign_in users(:one)
     assert_difference("Ticket.count") do
       assert_enqueued_with(job: TicketNotificationJob) do
         post create_ticket_url(team_id: teams(:one).id), params: { ticket: { title: "New Ticket", description: "New Description",
                                                                              priority: Ticket::TICKET_LOW_PRIORITY,
-                                                                             status: Ticket::TICKET_TO_DO_STATUS } }
+                                                                             status: Ticket::TICKET_TO_DO_STATUS,
+                                                                             code_identifier: "ABC-123" } }
       end
     end
     assert_redirected_to team_tickets_path(teams(:one))

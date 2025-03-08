@@ -34,6 +34,7 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   test "should upcase code_identifier before save" do
+    Team.skip_callback(:create, :after, :create_ticket_code_identifier_sequence)
     team = Team.new(name: "Test Team", code_identifier: "abcd", owner: users(:one), creator: users(:one))
     team.save
     assert_equal "ABCD", team.code_identifier

@@ -47,6 +47,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create team" do
+    Team.skip_callback(:create, :after, :create_ticket_code_identifier_sequence)
     sign_in users(:one)
     assert_difference("Team.count") do
       post create_team_url, params: { team: { name: "New Team", code_identifier: "NTM", description: "New Description",
