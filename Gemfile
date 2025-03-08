@@ -69,6 +69,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem "mocha"
   gem "selenium-webdriver"
   gem "rails-controller-testing"
   # Use sqlite3 as the database for Active Record
