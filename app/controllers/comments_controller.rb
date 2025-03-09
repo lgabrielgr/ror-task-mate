@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include SetTicket
+
   def new
     set_ticket
     @comment = Comment.new(ticket: @ticket)
@@ -39,10 +41,6 @@ class CommentsController < ApplicationController
   end
 
   private
-
-  def set_ticket
-    @ticket = Ticket.find_by(id: params[:id])
-  end
 
   def comment_params
     params.require(:comment).permit(:body)

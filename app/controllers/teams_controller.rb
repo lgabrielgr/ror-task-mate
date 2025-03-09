@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  include Constants
+  include Constants, SetTeam
 
   def tickets
     set_team
@@ -50,10 +50,6 @@ class TeamsController < ApplicationController
   end
 
   private
-
-  def set_team
-    @team = Team.find(params[:team_id])
-  end
 
   def team_params
     params.require(:team).permit(:name, :code_identifier, :description, :owner_id, member_ids: [])

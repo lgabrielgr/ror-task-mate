@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  include Constants
+  include Constants, SetTeam, SetTicket
 
   TICKET_PRIORITY_OPTIONS_FOR_SELECTION = {
     TICKET_LOW_PRIORITY => TICKET_LOW_PRIORITY_NAME,
@@ -72,14 +72,6 @@ class TicketsController < ApplicationController
     else
       TicketNotificationJob.perform_later(@ticket.assignee, @ticket, :updated)
     end
-  end
-
-  def set_ticket
-    @ticket = Ticket.find(params[:id])
-  end
-
-  def set_team
-    @team = Team.find(params[:team_id])
   end
 
   def ticket_params
