@@ -116,6 +116,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    doorkeeper (5.8.1)
+      railties (>= 5)
     dotenv (3.1.7)
     dotenv-rails (3.1.7)
       dotenv (= 3.1.7)
@@ -407,6 +409,7 @@ DEPENDENCIES
   debug
   delayed_job_active_record
   devise (~> 4.9.3)
+  doorkeeper
   dotenv-rails
   importmap-rails
   jbuilder
