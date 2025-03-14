@@ -22,6 +22,15 @@ Rails.application.routes.draw do
   get "ticket/:id/comment/:comment_id/edit" => "comments#edit", as: :edit_comment
   patch "ticket/:id/comment/:comment_id" => "comments#update", as: :comment
 
+  # API ROUTES
+  namespace :api do
+    namespace :v1 do
+      resources :teams, only: %i[index]
+      get "team/:id" => "teams#find"
+      get "team/:team_id/tickets" => "teams#tickets"
+    end
+  end
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
