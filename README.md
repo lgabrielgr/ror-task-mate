@@ -94,11 +94,31 @@ TaskMate is a collaborative task management application built with Ruby on Rails
 
 ## Usage
 
+### Web Application
 1. **Sign up**: Create an account or log in with an existing one.
 2. **Create a Team**: Navigate to the "Teams" section to create a new team.
 3. **Manage Tasks**: Add tasks, assign them to team members, and update their status as they progress.
 4. **Collaborate**: Use the comments feature to discuss tasks with your team.
 
+### RESTful API
+1. **Doorkeeper Application**: Create a new doorkeeper application to generate a client_id and client_secret for oauth token generation.
+   1. In rails console execute the following command:
+   2. ```bash
+      Doorkeeper::Application.create!(
+      name: "ror-task-mate",
+      redirect_uri: "http://localhost:3000/callback",
+      scopes: "public write"
+      )
+      ```
+2. **OAuth token**: Generate an oauth token using the client_id and client_secret (generated in previous step).
+   1. ```bash
+      curl -X POST -d "client_id=client_id&client_secret=client_secret&grant_type=client_credentials" http://localhost:3000/oauth/token
+      ```
+3. **API Endpoints**: Use the generated token to access the API endpoints.
+   1. Teams:
+      2. GET /api/v1/teams
+      3. GET /api/v1/team/:id
+      4. GET /api/v1/team/:id/tickets
 ---
 
 ## Project Structure
