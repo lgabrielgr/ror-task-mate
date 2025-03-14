@@ -101,7 +101,7 @@ TaskMate is a collaborative task management application built with Ruby on Rails
 4. **Collaborate**: Use the comments feature to discuss tasks with your team.
 
 ### RESTful API
-1. **Doorkepper Application**: Create a new doorkeeper application to generate a client_id and client_secret for oauth token generation.
+1. **Doorkeeper Application**: Create a new doorkeeper application to generate a client_id and client_secret for oauth token generation.
    1. In rails console execute the following command:
    2. ```bash
       Doorkeeper::Application.create!(
