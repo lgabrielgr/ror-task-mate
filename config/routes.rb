@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :teams, only: %i[index]
-      get "team/:id" => "teams#find"
+      get "team/:team_id" => "teams#view"
       get "team/:team_id/tickets" => "teams#tickets"
     end
   end
