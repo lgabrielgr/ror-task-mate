@@ -2,6 +2,7 @@ module Api
   module V1
     class TeamsController < Api::ApplicationController
       include SetTeam
+      before_action :set_team, only: [ :view, :tickets ]
 
       def index
         render json: Team.all.as_json(except: [ :owner_id, :creator_id ],
@@ -12,7 +13,6 @@ module Api
       end
 
       def view
-        set_team
         render json: @team.as_json(except: [ :owner_id, :creator_id ],
                                   include: {
                                     owner: { only: [ :id, :first_name, :last_name, :email ] },
@@ -21,7 +21,6 @@ module Api
       end
 
       def tickets
-        set_team
         render json: @team&.tickets&.map { |ticket|
           ticket.as_json(except: [ :creator_id, :assignee_id, :team_id, :priority, :status ],
                          include: {
