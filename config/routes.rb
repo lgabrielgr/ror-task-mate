@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :teams, only: %i[index]
       get "team/:team_id" => "teams#view"
       get "team/:team_id/tickets" => "teams#tickets"
+      get "ticket/:id" => "tickets#view"
     end
   end
 
