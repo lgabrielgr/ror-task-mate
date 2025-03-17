@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   use_doorkeeper
   # devise customization
   devise_for :users, controllers: { registrations: "users/registrations" }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
   # TEAM ROUTES
   get "team/:team_id/tickets" => "teams#tickets", as: :team_tickets
   get "team/:team_id/tickets/new" => "tickets#new", as: :new_ticket
