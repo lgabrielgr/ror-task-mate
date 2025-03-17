@@ -105,7 +105,7 @@ TaskMate is a collaborative task management application built with Ruby on Rails
    1. In rails console execute the following command:
    2. ```bash
       Doorkeeper::Application.create!(
-      name: "ror-task-mate",
+      name: "ror-task-mate-api",
       redirect_uri: "http://localhost:3000/callback",
       scopes: "public write"
       )
@@ -116,9 +116,11 @@ TaskMate is a collaborative task management application built with Ruby on Rails
       ```
 3. **API Endpoints**: Use the generated token to access the API endpoints.
    1. Teams:
-      2. GET /api/v1/teams
-      3. GET /api/v1/team/:id
-      4. GET /api/v1/team/:id/tickets
+      1. GET /api/v1/teams
+      2. GET /api/v1/team/:team_id
+      3. GET /api/v1/team/:team_id/tickets
+   2. Tickets:
+      1. GET /api/v1/tickets/:ticket_id
 ---
 
 ## Project Structure
