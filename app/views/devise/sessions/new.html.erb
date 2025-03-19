@@ -1,6 +1,11 @@
 <div class="d-flex justify-content-center align-items-center vh-100">
   <div class="card p-4 shadow" style="width: 25rem;">
     <h2 class="text-center">Log in</h2>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
         <%= f.label :email, class: "form-label" %><br/>
