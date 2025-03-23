@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav justify-content-end">
           <li class="nav-item active">
-            <span class="navbar-text">
+            <span class="navbar-text" style="color: black;">
               <b>Welcome:</b> <i><%= current_user.friendly_name %></i>
             </span>
           </li>
@@ -41,7 +41,7 @@
                 Account
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="<%= edit_user_registration_path %>">Edit</a>
                 <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
               </div>
             </div>
