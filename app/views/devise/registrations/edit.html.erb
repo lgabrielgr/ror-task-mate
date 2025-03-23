@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow" style="width: 25rem;">
+    <h2 class="text-center">Edit User</h2>
+    <% if resource.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul>
+          <% resource.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, class: "form-label" %>
+        <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Enter your email", disabled: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :first_name, class: "form-label" %><br />
+        <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "Your first name", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :last_name, class: "form-label" %><br />
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Your last name", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: "form-label" %>
+        <small class="form-text text-muted">Leave blank if you don't want to change it</small>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Enter your password" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "form-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm your password" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password, class: "form-label" %>
+        <small class="form-text text-muted">We need your current password to confirm your changes</small>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "Enter your current password", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Update", class: "btn btn-primary btn-block" %>
+      </div>
+    <% end %>
+    <div class="text-center">
+      <%= link_to "Cancel", root_path, class: "btn btn-link" %>
+    </div>
+  </div>
+</div>
