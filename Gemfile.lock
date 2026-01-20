@@ -83,7 +83,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (4.0.1)
     bindex (0.8.1)
-    bootsnap (1.18.4)
+    bootsnap (1.21.1)
       msgpack (~> 1.2)
     brakeman (7.1.2)
       racc
@@ -176,7 +176,7 @@ GEM
     minitest (5.27.0)
     mocha (2.7.1)
       ruby2_keywords (>= 0.0.5)
-    msgpack (1.7.5)
+    msgpack (1.8.0)
     net-imap (0.5.6)
       date
       net-protocol
