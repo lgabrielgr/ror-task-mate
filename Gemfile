@@ -77,5 +77,5 @@ group :test do
   gem "rails-controller-testing"
   # Use sqlite3 as the database for Active Record
   gem "sqlite3", ">= 2.1"
-  gem "minitest", "~> 5.0" # Pin minitest to 5.x for Rails 8.0.2 compatibility
+  gem "minitest", "~> 6.0" # Pin minitest to 5.x for Rails 8.0.2 compatibility
 end
