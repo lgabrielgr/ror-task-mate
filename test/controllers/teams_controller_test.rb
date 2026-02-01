@@ -47,7 +47,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create team" do
-    Team.skip_callback(:create, :after, :create_ticket_code_identifier_sequence)
+    Team.skip_callback(:create, :after, :create_ticket_code_identifier_sequence, raise: false)
     begin
       sign_in users(:one)
       assert_difference("Team.count") do
