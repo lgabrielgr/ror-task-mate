@@ -100,16 +100,10 @@ GEM
     concurrent-ruby (1.3.6)
     connection_pool (3.0.2)
     crass (1.0.6)
-    daemons (1.4.1)
     date (3.5.1)
     debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    delayed_job (4.1.13)
-      activesupport (>= 3.0, < 9.0)
-    delayed_job_active_record (4.1.11)
-      activerecord (>= 3.0, < 9.0)
-      delayed_job (>= 3.0, < 5)
     devise (5.0.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -144,9 +138,6 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    jbuilder (2.14.1)
-      actionview (>= 7.0.0)
-      activesupport (>= 7.0.0)
     json (2.10.1)
     kamal (2.10.1)
       activesupport (>= 7.0)
@@ -174,8 +165,6 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.27.0)
-    mocha (3.0.1)
-      ruby2_keywords (>= 0.0.5)
     msgpack (1.8.0)
     net-imap (0.5.6)
       date
@@ -320,7 +309,6 @@ GEM
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
-    ruby2_keywords (0.0.5)
     rubyzip (3.2.2)
     securerandom (0.4.1)
     selenium-webdriver (4.40.0)
@@ -414,17 +402,13 @@ DEPENDENCIES
   bootsnap
   brakeman
   capybara
-  daemons
   debug
-  delayed_job_active_record
   devise (~> 5.0.0)
   doorkeeper
   dotenv-rails
   importmap-rails
-  jbuilder
   kamal
   minitest (~> 5.0)
-  mocha
   pg (>= 1.1)
   propshaft
   puma (>= 5.0)
@@ -440,7 +424,6 @@ DEPENDENCIES
   stimulus-rails
   thruster
   turbo-rails
-  tzinfo-data
   web-console
 
 BUNDLED WITH
