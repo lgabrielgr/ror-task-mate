@@ -24,7 +24,7 @@ gem "doorkeeper"
 gem "bcrypt", "~> 3.1.21"
 
 # Flexible authentication solution for Rails with Warden
-gem "devise", "~> 5.0.0"
+gem "devise", "~> 5.0.1"
 
 # Authorization library for Rails applications
 gem "pundit", "~> 2.5"
